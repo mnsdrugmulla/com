@@ -1,0 +1,2839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My New School, Drugmulla — Kupwara</title>
+<meta name="description" content="My New School, Drugmulla, Kupwara — admissions, examinations, syllabus, notifications, recruitment, transport and more.">
+<style>
+/* ============================================================
+   MY NEW SCHOOL, Drugmulla — design system
+   Palette drawn from the Kupwara valley: pine forest, chinar-leaf
+   rust, walnut wood, saffron gold, cool granite mist.
+   ============================================================ */
+
+/* Self-hosted-safe font stacks — no external font requests.
+   Serif leans on Georgia (present on virtually every OS) for the
+   heritage/heading feel; sans uses each platform's native UI font. */
+:root{
+  --pine:#1B4332;
+  --pine-dark:#0E2A1C;
+  --pine-light:#2D6A4F;
+  --rust:#BC6C25;
+  --rust-dark:#9A5417;
+  --gold:#C99A2E;
+  --cream:#FBF7EE;
+  --paper:#F4EFE3;
+  --walnut:#2E2117;
+  --walnut-soft:#5C4A3A;
+  --mist:#E9EDE7;
+  --line:rgba(46,33,23,.14);
+  --white:#FFFFFF;
+
+  --serif:Georgia, 'Times New Roman', 'Noto Serif', serif;
+  --sans:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  --radius:4px;
+  --radius-lg:10px;
+  --shadow:0 10px 30px rgba(14,42,28,.12);
+  --container:1180px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:var(--sans);
+  color:var(--walnut);
+  background:var(--cream);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4{
+  font-family:var(--serif);
+  font-weight:600;
+  color:var(--pine-dark);
+  margin:0 0 .5em;
+  line-height:1.15;
+}
+p{margin:0 0 1em;}
+ul{margin:0;padding:0;list-style:none;}
+button{font-family:var(--sans);cursor:pointer;}
+.container{max-width:var(--container);margin:0 auto;padding:0 28px;}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
+}
+
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;}
+
+/* ---------- ridge divider motif (recurring device) ---------- */
+.ridge{
+  display:block;width:100%;height:46px;
+  fill:var(--cream);
+}
+.ridge.on-pine{fill:var(--pine-dark);}
+.ridge.on-mist{fill:var(--mist);}
+.ridge.on-cream{fill:var(--cream);}
+.ridge.on-walnut{fill:var(--walnut);}
+
+/* ---------- top notification strip ---------- */
+.topstrip{
+  background:var(--walnut);
+  color:var(--paper);
+  font-size:.85rem;
+}
+.topstrip .container{
+  display:flex;align-items:center;gap:10px;
+  padding-top:7px;padding-bottom:7px;
+  overflow:hidden;
+}
+.topstrip .dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--gold);flex:0 0 auto;
+  animation:blink 1.6s infinite;
+}
+@keyframes blink{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(201,154,46,.5);}50%{opacity:.35;box-shadow:0 0 0 5px rgba(201,154,46,0);}}
+.topstrip .label{flex:0 0 auto;font-weight:600;letter-spacing:.02em;color:var(--gold);}
+.topstrip .ticker-track{overflow:hidden;flex:1;position:relative;height:1.4em;}
+.topstrip .ticker-items{position:absolute;white-space:nowrap;animation:ticker 22s linear infinite;}
+.topstrip .ticker-items span{margin-right:3.5em;}
+@keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.topstrip:hover .ticker-items{animation-play-state:paused;}
+
+/* ---------- header / nav ---------- */
+header.site{
+  position:sticky;top:0;z-index:100;
+  background:var(--cream);
+  border-bottom:1px solid var(--line);
+}
+.nav-row{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;gap:20px;}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand-mark{
+  width:46px;height:46px;border-radius:50%;
+  background:var(--pine);color:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-weight:700;font-size:1.15rem;
+  flex:0 0 auto;
+}
+.brand-text .name{font-family:var(--serif);font-weight:600;font-size:1.18rem;color:var(--pine-dark);display:block;line-height:1.2;text-transform:uppercase;letter-spacing:.03em;}
+.brand-text .place{font-size:.78rem;color:var(--walnut-soft);letter-spacing:.03em;}
+
+nav.main-nav ul{display:flex;gap:2px;align-items:center;}
+nav.main-nav a{
+  display:block;padding:10px 14px;font-weight:600;font-size:.92rem;
+  color:var(--walnut);border-radius:var(--radius);position:relative;
+  transition:color .2s ease;
+}
+nav.main-nav a::after{
+  content:"";position:absolute;left:14px;right:14px;bottom:6px;height:2px;
+  background:var(--rust);transform:scaleX(0);transform-origin:left;
+  transition:transform .25s ease;
+}
+nav.main-nav a:hover{color:var(--rust-dark);}
+nav.main-nav a:hover::after{transform:scaleX(1);}
+.nav-cta{
+  background:var(--pine);color:var(--cream) !important;
+  padding:10px 18px;border-radius:999px;font-weight:600;
+  transition:background .2s ease, transform .2s ease;
+}
+.nav-cta:hover{background:var(--pine-dark);transform:translateY(-1px);}
+.nav-cta::after{display:none;}
+
+/* red blinking "new" badge on nav items */
+.nav-badge{
+  display:inline-block;background:#C81E1E;color:#fff;font-size:.6rem;font-weight:700;
+  padding:1px 6px;border-radius:999px;margin-left:6px;vertical-align:2px;
+  letter-spacing:.02em;animation:blink 1.4s infinite;
+}
+
+.nav-toggle{display:none;background:none;border:0;padding:8px;}
+.nav-toggle span,.nav-toggle span::before,.nav-toggle span::after{
+  content:"";display:block;width:24px;height:2px;background:var(--pine-dark);
+  position:relative;transition:.25s ease;
+}
+.nav-toggle span::before{position:absolute;top:-8px;}
+.nav-toggle span::after{position:absolute;top:8px;}
+.nav-toggle.active span{background:transparent;}
+.nav-toggle.active span::before{top:0;transform:rotate(45deg);background:var(--rust-dark);}
+.nav-toggle.active span::after{top:0;transform:rotate(-45deg);background:var(--rust-dark);}
+
+/* ---------- site search bar ---------- */
+.search-bar-row{border-top:1px solid var(--line);background:var(--paper);}
+.search-bar-row .container{padding-top:10px;padding-bottom:10px;}
+.site-search{position:relative;max-width:520px;margin:0 auto;}
+.site-search input{
+  width:100%;padding:10px 44px 10px 16px;border-radius:999px;border:1px solid var(--line);
+  background:var(--white);font-family:var(--sans);font-size:.92rem;color:var(--walnut);
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+.site-search input:focus{border-color:var(--pine);box-shadow:0 0 0 3px rgba(27,67,50,.12);outline:none;}
+.site-search .search-icon{
+  position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--walnut-soft);
+  font-size:.95rem;pointer-events:none;
+}
+.search-results{
+  position:absolute;left:0;right:0;top:calc(100% + 8px);background:var(--white);
+  border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);
+  max-height:360px;overflow-y:auto;z-index:150;display:none;
+}
+.search-results.show{display:block;}
+.search-results a{
+  display:block;padding:12px 18px;border-bottom:1px solid var(--line);transition:background .15s ease;
+}
+.search-results a:last-child{border-bottom:none;}
+.search-results a:hover{background:var(--paper);}
+.search-results .r-cat{font-size:.72rem;color:var(--rust-dark);font-weight:700;text-transform:uppercase;letter-spacing:.03em;}
+.search-results .r-title{font-size:.92rem;font-weight:600;color:var(--pine-dark);margin-top:2px;}
+.search-results .r-empty{padding:16px 18px;color:var(--walnut-soft);font-size:.88rem;}
+
+/* ---------- highlights marquee (below hero) ---------- */
+.highlights-band{background:var(--walnut);padding:14px 0;}
+.highlights-track .m-item{
+  display:flex;align-items:center;gap:10px;padding:0 30px;white-space:nowrap;
+  color:var(--cream);font-weight:600;font-size:.92rem;flex:0 0 auto;
+}
+.highlights-track .m-item .dot2{color:var(--gold);}
+
+@media (max-width:920px){
+  nav.main-nav{
+    position:fixed;inset:70px 0 0 0;background:var(--cream);
+    transform:translateX(100%);transition:transform .3s ease;
+    overflow-y:auto;padding:10px 28px 40px;
+  }
+  nav.main-nav.open{transform:translateX(0);}
+  nav.main-nav ul{flex-direction:column;align-items:stretch;gap:4px;}
+  nav.main-nav a{padding:14px 6px;border-bottom:1px solid var(--line);}
+  .nav-toggle{display:block;}
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;min-height:88vh;display:flex;align-items:center;
+  overflow:hidden;background:var(--pine-dark);color:var(--cream);
+}
+.hero-bg{position:absolute;inset:0;z-index:0;}
+.hero-bg video,.hero-bg .fallback{
+  width:100%;height:100%;object-fit:cover;
+}
+.hero-bg .fallback{
+  background: var(--pine-dark);
+}
+.hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background:rgba(14,42,28,.55);
+}
+.hero-particles{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;}
+.hero-particles .leaf{
+  position:absolute;top:-8%;border-radius:0 60% 0 60%;opacity:.55;
+  animation:leafFall linear infinite;
+}
+@keyframes leafFall{
+  0%{transform:translateY(-10vh) translateX(0) rotate(0deg);opacity:.65;}
+  85%{opacity:.5;}
+  100%{transform:translateY(115vh) translateX(60px) rotate(340deg);opacity:0;}
+}
+.hero-particles .ring{
+  position:absolute;border:1px solid rgba(251,247,238,.18);border-radius:50%;
+  animation:ringDrift ease-in-out infinite alternate;
+}
+@keyframes ringDrift{0%{transform:translate(0,0) scale(1);}100%{transform:translate(20px,-16px) scale(1.08);}}
+.hero-ridges{position:absolute;left:0;right:0;bottom:-2px;z-index:1;line-height:0;}
+.hero-content{position:relative;z-index:2;max-width:720px;padding:120px 28px 90px;}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.85rem;color:var(--gold);font-weight:600;margin-bottom:18px;
+  opacity:0;animation:riseIn .7s ease forwards .1s;
+}
+.hero h1{
+  font-size:clamp(2.3rem,5vw,3.6rem);color:var(--cream);margin-bottom:.35em;
+  text-transform:uppercase;letter-spacing:.01em;
+  opacity:0;animation:riseIn .8s ease forwards .25s;
+}
+.hero p.lead{
+  font-size:1.15rem;color:#DCE6DE;max-width:560px;margin-bottom:2em;
+  opacity:0;animation:riseIn .8s ease forwards .45s;
+}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:riseIn .8s ease forwards .6s;}
+@keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+.hero-badges{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:1.8em;opacity:0;animation:riseIn .8s ease forwards .5s;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:999px;
+  background:rgba(251,247,238,.12);border:1px solid rgba(251,247,238,.3);
+  color:var(--cream);font-size:.82rem;font-weight:600;
+}
+
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:13px 26px;
+  border-radius:999px;font-weight:600;font-size:.95rem;
+  border:1px solid transparent;transition:transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+}
+.btn-primary{background:var(--rust);color:var(--cream);}
+.btn-primary:hover{background:var(--rust-dark);transform:translateY(-2px);box-shadow:0 8px 20px rgba(188,108,37,.35);}
+.btn-ghost{background:transparent;color:var(--cream);border-color:rgba(251,247,238,.5);}
+.btn-ghost:hover{background:rgba(251,247,238,.12);border-color:var(--cream);}
+.btn-outline{background:transparent;color:var(--pine);border-color:var(--pine);}
+.btn-outline:hover{background:var(--pine);color:var(--cream);}
+.btn-sm{padding:8px 16px;font-size:.85rem;}
+
+/* ---------- generic section ---------- */
+section{padding:86px 0;}
+.section-mist{background:var(--mist);}
+.section-pine{background:var(--pine-dark);color:var(--cream);}
+.section-pine h2, .section-pine h3{color:var(--cream);}
+.eyebrow-plain{color:var(--rust-dark);font-weight:600;font-size:.9rem;margin-bottom:.5em;}
+.section-pine .eyebrow-plain{color:var(--gold);}
+.section-head{max-width:640px;margin-bottom:48px;}
+.section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+.section-head p{color:var(--walnut-soft);font-size:1.05rem;}
+.section-pine .section-head p{color:#CBD8CE;}
+
+/* ---------- grids / cards ---------- */
+.grid{display:grid;gap:24px;}
+.grid-3{grid-template-columns:repeat(3,1fr);}
+.grid-2{grid-template-columns:repeat(2,1fr);}
+.grid-4{grid-template-columns:repeat(4,1fr);}
+@media (max-width:900px){.grid-3,.grid-4{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:600px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr;}}
+
+.card{
+  background:var(--white);border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:26px;transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  position:relative;overflow:hidden;
+}
+.card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:4px;
+  background:var(--pine);transform:scaleX(0);transform-origin:left;transition:transform .3s ease;
+}
+.card:hover::before{transform:scaleX(1);}
+.card:nth-of-type(3n+2)::before{background:var(--rust);}
+.card:nth-of-type(3n+3)::before{background:var(--gold);}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent;}
+.card .meta{font-size:.8rem;color:var(--rust-dark);font-weight:600;margin-bottom:.6em;}
+.card h3{font-size:1.15rem;margin-bottom:.4em;}
+.card p{color:var(--walnut-soft);font-size:.95rem;margin-bottom:0;}
+.card-icon{
+  width:42px;height:42px;border-radius:50%;background:var(--mist);
+  display:flex;align-items:center;justify-content:center;margin-bottom:14px;color:var(--pine);
+  transition:transform .3s ease;
+}
+.card:hover .card-icon{transform:scale(1.12) rotate(-6deg);}
+.card:nth-of-type(3n+2) .card-icon{background:#F3E3D3;color:var(--rust-dark);}
+.card:nth-of-type(3n+3) .card-icon{background:#F6EDD3;color:#8A6A16;}
+
+/* notifications list */
+.notice-list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line);}
+.notice-item{
+  display:flex;gap:20px;align-items:flex-start;padding:20px 4px;
+  border-bottom:1px solid var(--line);transition:background .2s ease;
+}
+.notice-item:hover{background:var(--paper);}
+.notice-date{
+  flex:0 0 70px;text-align:center;background:var(--pine);color:var(--cream);
+  border-radius:var(--radius);padding:8px 4px;font-weight:600;font-size:.85rem;
+}
+.notice-date small{display:block;font-weight:400;font-size:.7rem;opacity:.8;}
+.notice-body h3{font-size:1.02rem;margin-bottom:.25em;}
+.notice-body p{color:var(--walnut-soft);font-size:.92rem;margin:0;}
+
+/* staff */
+.staff-card{text-align:center;}
+.staff-photo{
+  width:100%;aspect-ratio:3/4;border-radius:var(--radius-lg);overflow:hidden;
+  background:var(--mist);margin:0 auto 16px;max-width:170px;
+  border:3px solid var(--paper);box-shadow:0 6px 18px rgba(14,42,28,.15);
+}
+.staff-photo img{width:100%;height:100%;object-fit:cover;}
+.staff-photo .ph-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--pine);font-family:var(--serif);font-size:1.6rem;background:var(--mist);}
+.staff-card h3{font-size:1.02rem;margin-bottom:.1em;}
+.staff-card .role{color:var(--rust-dark);font-weight:600;font-size:.85rem;}
+
+/* buses / results tables */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--white);}
+table.mns-table{width:100%;border-collapse:collapse;min-width:520px;}
+table.mns-table th{
+  text-align:left;background:var(--paper);color:var(--walnut);
+  padding:14px 18px;font-size:.82rem;font-weight:700;border-bottom:1px solid var(--line);
+}
+table.mns-table td{padding:14px 18px;border-bottom:1px solid var(--line);font-size:.92rem;color:var(--walnut-soft);}
+table.mns-table tr:last-child td{border-bottom:none;}
+table.mns-table tr:hover td{background:var(--paper);}
+
+/* gallery carousel */
+.carousel{position:relative;}
+.carousel-track{
+  display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;
+  padding-bottom:8px;scrollbar-width:thin;
+}
+.carousel-track::-webkit-scrollbar{height:8px;}
+.carousel-track::-webkit-scrollbar-thumb{background:var(--pine-light);border-radius:8px;}
+.carousel-slide{
+  flex:0 0 auto;width:300px;scroll-snap-align:start;
+  border-radius:var(--radius-lg);overflow:hidden;position:relative;
+  aspect-ratio:4/3;background:var(--mist);
+}
+.carousel-slide img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
+.carousel-slide:hover img{transform:scale(1.06);}
+.carousel-slide .cap{
+  position:absolute;left:0;right:0;bottom:0;padding:14px 16px 12px;
+  background:rgba(14,42,28,.72);
+  color:var(--cream);font-size:.9rem;font-weight:600;
+}
+.carousel-nav{display:flex;gap:10px;justify-content:flex-end;margin-top:14px;}
+.carousel-nav button{
+  width:40px;height:40px;border-radius:50%;border:1px solid var(--line);
+  background:var(--white);display:flex;align-items:center;justify-content:center;
+  transition:background .2s ease, color .2s ease;
+}
+.carousel-nav button:hover{background:var(--pine);color:var(--cream);}
+
+/* ---------- marquee (auto-scrolling banners) ---------- */
+.marquee-wrap{
+  overflow:hidden;position:relative;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+}
+.marquee-track{display:flex;width:max-content;animation:marqueeLeft linear infinite;}
+@keyframes marqueeLeft{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.marquee-wrap:hover .marquee-track{animation-play-state:paused;}
+
+/* ---------- our toppers (two rows, both scrolling left) ---------- */
+.toppers-rows{display:flex;flex-direction:column;gap:22px;margin-top:44px;}
+.toppers-track{gap:22px;padding:6px 4px 30px;}
+.topper-card{
+  flex:0 0 auto;width:190px;border-radius:var(--radius-lg);overflow:hidden;position:relative;
+  aspect-ratio:3/4;background:var(--cream);border:3px solid var(--gold);
+  box-shadow:0 14px 30px rgba(0,0,0,.3);transition:transform .3s ease;
+}
+.topper-card:hover{transform:translateY(-6px) scale(1.02);}
+.topper-card img{width:100%;height:100%;object-fit:cover;}
+.topper-card .ph-fallback{
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  color:var(--pine);font-family:var(--serif);font-size:2rem;background:var(--mist);
+}
+.topper-card .cap{
+  position:absolute;left:0;right:0;bottom:0;padding:14px 12px 12px;
+  background:rgba(14,42,28,.8);
+}
+.topper-card .cap .t-name{color:var(--cream);font-weight:700;font-size:.92rem;line-height:1.2;}
+.topper-card .cap .t-meta{color:var(--gold);font-weight:700;font-size:.78rem;margin-top:2px;}
+.topper-card .rank{
+  position:absolute;top:10px;left:10px;width:30px;height:30px;border-radius:50%;
+  background:var(--gold);color:var(--walnut);display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:.85rem;box-shadow:0 4px 10px rgba(0,0,0,.3);
+}
+
+.feedback-marquee-track{gap:24px;padding:6px 4px 20px;}
+.feedback-marquee-track .quote-card{flex:0 0 340px;}
+
+/* ---------- latest updates panel (top of homepage) ---------- */
+.latest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:32px;}
+@media (max-width:900px){.latest-grid{grid-template-columns:1fr;}}
+.latest-card{
+  display:flex;gap:16px;background:var(--white);border:1px solid var(--line);
+  border-radius:var(--radius-lg);padding:20px;transition:transform .25s ease, box-shadow .25s ease;
+}
+.latest-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
+.latest-card .ic{
+  flex:0 0 auto;width:40px;height:40px;border-radius:50%;background:var(--mist);
+  display:flex;align-items:center;justify-content:center;color:var(--rust-dark);font-size:1.1rem;
+}
+.latest-card .meta{font-size:.78rem;color:var(--rust-dark);font-weight:700;margin-bottom:.3em;}
+.latest-card h3{font-size:.98rem;margin-bottom:.2em;}
+.latest-card p{font-size:.85rem;color:var(--walnut-soft);margin:0;}
+.latest-more{text-align:center;}
+
+/* ---------- vision & mission ---------- */
+.vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+@media (max-width:700px){.vm-grid{grid-template-columns:1fr;}}
+.vm-card{
+  background:var(--white);border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:32px;text-align:center;
+}
+.vm-icon{font-size:1.8rem;margin-bottom:12px;}
+.vm-card h3{margin-bottom:.5em;}
+.vm-card p{color:var(--walnut-soft);margin:0;}
+
+/* ---------- principal / leader message ---------- */
+.leader-panel{display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:center;}
+@media (max-width:700px){.leader-panel{grid-template-columns:1fr;text-align:center;}}
+.leader-photo{
+  width:100%;aspect-ratio:3/4;max-width:220px;margin:0 auto;border-radius:var(--radius-lg);
+  overflow:hidden;background:var(--mist);border:3px solid var(--paper);box-shadow:0 14px 30px rgba(14,42,28,.15);
+}
+.leader-photo img{width:100%;height:100%;object-fit:cover;}
+.leader-photo .ph-fallback{
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  color:var(--pine);font-family:var(--serif);font-size:2.2rem;background:var(--mist);
+}
+.leader-text .mark{font-family:var(--serif);font-size:3rem;color:var(--rust);line-height:.3;display:block;margin-bottom:10px;}
+.leader-msg{font-size:1.08rem;font-style:italic;color:var(--walnut-soft);margin-bottom:1em;}
+.leader-name{font-weight:700;color:var(--pine-dark);font-family:var(--serif);font-size:1.05rem;}
+.leader-role{color:var(--rust-dark);font-weight:600;font-size:.85rem;}
+
+/* spotlight: side photos + centre video */
+.spotlight{display:grid;grid-template-columns:1fr 1.6fr 1fr;gap:22px;align-items:center;}
+.spotlight-col{display:flex;flex-direction:column;gap:16px;}
+.spotlight-col img{border-radius:var(--radius-lg);aspect-ratio:3/4;object-fit:cover;box-shadow:var(--shadow);}
+.spotlight-main{position:relative;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:16/10;background:#000;box-shadow:0 20px 45px rgba(14,42,28,.3);}
+.spotlight-main video,.spotlight-main iframe{width:100%;height:100%;object-fit:cover;border:0;display:block;}
+@media (max-width:900px){
+  .spotlight{grid-template-columns:1fr;}
+  .spotlight-col{flex-direction:row;}
+  .spotlight-col img{aspect-ratio:1/1;}
+}
+
+/* video gallery */
+.video-card{border-radius:var(--radius-lg);overflow:hidden;background:var(--white);border:1px solid var(--line);}
+.video-card .frame{aspect-ratio:16/9;background:#000;}
+.video-card .frame video, .video-card .frame iframe{width:100%;height:100%;border:0;}
+.video-card .cap{padding:14px 16px;font-weight:600;font-size:.92rem;}
+
+/* feedback */
+.quote-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-lg);padding:28px;position:relative;}
+.quote-card .mark{font-family:var(--serif);font-size:3rem;color:var(--rust);line-height:.4;display:block;margin-bottom:14px;}
+.quote-card p.msg{color:var(--walnut-soft);font-style:italic;}
+.quote-card .who{font-weight:700;color:var(--pine-dark);font-size:.9rem;}
+
+/* contact */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+@media (max-width:900px){.contact-wrap{grid-template-columns:1fr;}}
+.form-field{margin-bottom:18px;}
+.form-field label{display:block;font-size:.85rem;font-weight:600;margin-bottom:6px;color:var(--pine-dark);}
+.form-field input,.form-field textarea,.form-field select{
+  width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--white);font-family:var(--sans);font-size:.95rem;color:var(--walnut);
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+.form-field input:focus,.form-field textarea:focus,.form-field select:focus{
+  border-color:var(--pine);box-shadow:0 0 0 3px rgba(27,67,50,.12);outline:none;
+}
+.contact-info-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:22px;}
+.contact-info-item .ic{
+  width:42px;height:42px;border-radius:50%;background:var(--pine);color:var(--cream);
+  display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+}
+.contact-info-item h4{margin:0 0 .2em;font-family:var(--sans);font-weight:700;font-size:.95rem;}
+.contact-info-item p{margin:0;color:var(--walnut-soft);font-size:.92rem;}
+
+.form-msg{padding:12px 16px;border-radius:var(--radius);font-size:.9rem;margin-bottom:16px;display:none;}
+.form-msg.show{display:block;}
+.form-msg.ok{background:#E6F0E9;color:var(--pine-dark);border:1px solid var(--pine-light);}
+
+/* footer */
+footer.site{background:var(--walnut);color:#E7DFD3;}
+.footer-top{padding:64px 0 40px;}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;}
+@media (max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;}}
+@media (max-width:560px){.footer-grid{grid-template-columns:1fr;}}
+footer.site h4{color:var(--cream);font-family:var(--sans);font-weight:700;font-size:.95rem;margin-bottom:18px;letter-spacing:.02em;}
+footer.site .brand-text .name,footer.site .brand-text .place{color:var(--cream);}
+footer.site p{color:#C9BBA9;font-size:.92rem;}
+footer.site ul li{margin-bottom:10px;}
+footer.site ul a{color:#C9BBA9;font-size:.92rem;transition:color .2s ease,padding-left .2s ease;}
+footer.site ul a:hover{color:var(--gold);padding-left:4px;}
+.footer-bottom{border-top:1px solid rgba(231,223,211,.15);padding:20px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.82rem;color:#B3A492;}
+.footer-bottom a{color:#B3A492;}
+.footer-bottom a:hover{color:var(--gold);}
+
+/* back to top */
+.to-top{
+  position:fixed;right:24px;bottom:24px;width:48px;height:48px;border-radius:50%;
+  background:var(--pine);color:var(--cream);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 20px rgba(14,42,28,.35);opacity:0;pointer-events:none;transform:translateY(10px);
+  transition:opacity .25s ease, transform .25s ease, background .2s ease;z-index:80;
+}
+.to-top.show{opacity:1;pointer-events:auto;transform:translateY(0);}
+.to-top:hover{background:var(--rust);}
+
+/* reveal-on-scroll (used sparingly, once per section) */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+/* ---------- admission banner (sits above the header) ---------- */
+.admission-banner{
+  background:var(--rust);
+  color:var(--cream);
+}
+.admission-banner .container{
+  display:flex;align-items:center;justify-content:center;gap:16px;
+  padding:11px 28px;flex-wrap:wrap;text-align:center;
+}
+.admission-banner .txt{font-size:.92rem;font-weight:600;}
+.admission-banner .txt strong{color:var(--gold);}
+.admission-banner a.btn{
+  padding:7px 18px;font-size:.82rem;background:var(--cream);color:var(--rust-dark);
+}
+.admission-banner a.btn:hover{background:var(--walnut);color:var(--cream);}
+
+/* ---------- admissions section ---------- */
+.adm-intro{max-width:760px;color:var(--walnut-soft);font-size:1.02rem;margin-bottom:40px;}
+.adm-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:36px;align-items:start;}
+@media (max-width:900px){.adm-grid{grid-template-columns:1fr;}}
+.adm-steps{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-lg);padding:8px 26px;}
+.adm-step{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line);}
+.adm-step:last-child{border-bottom:none;}
+.adm-step .num{
+  flex:0 0 auto;width:38px;height:38px;border-radius:50%;background:var(--pine);color:var(--cream);
+  display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:600;font-size:1.05rem;
+}
+.adm-step p{margin:0;color:var(--walnut-soft);padding-top:6px;}
+.adm-side{display:flex;flex-direction:column;gap:20px;}
+.adm-box{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-lg);padding:24px;}
+.adm-box h4{font-size:.92rem;margin-bottom:14px;color:var(--pine-dark);letter-spacing:.01em;}
+.adm-box ul{display:flex;flex-direction:column;gap:10px;}
+.adm-box ul li{font-size:.9rem;color:var(--walnut-soft);padding-left:22px;position:relative;}
+.adm-box.adm-docs ul li::before{content:"✓";position:absolute;left:0;color:var(--rust);font-weight:700;}
+.adm-box.adm-dates ul li::before{content:"📅";position:absolute;left:0;font-size:.8rem;}
+.adm-box.adm-fees ul li::before{content:"₹";position:absolute;left:0;color:var(--gold);font-weight:700;}
+.adm-cta{background:var(--pine-dark);color:var(--cream);border-radius:var(--radius-lg);padding:26px;text-align:center;}
+.adm-cta p{color:#CBD8CE;font-size:.88rem;margin-bottom:16px;}
+
+/* ---------- admission enquiry form (public) ---------- */
+.adm-form-panel{
+  margin-top:56px;background:var(--white);border:1px solid var(--line);
+  border-radius:var(--radius-lg);padding:38px;
+}
+.adm-form-panel .section-head{margin-bottom:30px;}
+.adm-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media (max-width:700px){.adm-form-grid{grid-template-columns:1fr;}}
+.adm-form-grid .full{grid-column:1/-1;}
+
+/* ---------- file upload widget (used in admin for photos / PDFs) ---------- */
+.file-input-wrap{
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  border:1.5px dashed var(--line);border-radius:var(--radius);padding:12px 14px;
+  background:var(--paper);
+}
+.file-input-wrap .file-choose-btn{
+  display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;
+  background:var(--pine);color:var(--cream);font-weight:600;font-size:.85rem;
+  cursor:pointer;transition:background .2s ease;flex:0 0 auto;
+}
+.file-input-wrap .file-choose-btn:hover{background:var(--pine-dark);}
+.file-input-wrap input[type="file"]{display:none;}
+.file-input-wrap .file-preview{
+  display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--walnut-soft);flex:1;min-width:0;
+}
+.file-input-wrap .file-preview img{width:44px;height:44px;object-fit:cover;border-radius:50%;border:2px solid var(--white);flex:0 0 auto;}
+.file-input-wrap .file-preview .pdf-chip{
+  display:inline-flex;align-items:center;gap:6px;background:var(--white);border:1px solid var(--line);
+  border-radius:999px;padding:5px 12px;font-size:.8rem;color:var(--pine-dark);font-weight:600;
+}
+.file-input-wrap .file-remove{
+  background:none;border:0;color:var(--rust-dark);font-size:.78rem;font-weight:700;cursor:pointer;flex:0 0 auto;
+}
+.file-hint{font-size:.78rem;color:var(--walnut-soft);margin-top:6px;}
+
+/* badge */
+.badge{display:inline-block;padding:4px 12px;border-radius:999px;background:var(--gold);color:var(--walnut);font-size:.72rem;font-weight:700;letter-spacing:.02em;}
+
+/* pdf download links (notifications / syllabus) */
+.pdf-link{
+  display:inline-flex;align-items:center;gap:6px;margin-top:10px;
+  font-size:.85rem;font-weight:700;color:var(--rust-dark);
+  padding:8px 14px;border:1px solid var(--rust);border-radius:999px;
+  transition:background .2s ease,color .2s ease,transform .2s ease;
+}
+.pdf-link:hover{background:var(--rust);color:var(--cream);transform:translateY(-2px);}
+
+/* ---------- teachers: flip cards + view-all modal ---------- */
+.teacher-card{perspective:1200px;height:270px;}
+.teacher-card .inner{
+  position:relative;width:100%;height:100%;transform-style:preserve-3d;
+  transition:transform .6s cubic-bezier(.4,.2,.2,1);
+}
+.teacher-card:hover .inner,.teacher-card:focus-within .inner{transform:rotateY(180deg);}
+.teacher-face,.teacher-back{
+  position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--radius-lg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:20px;text-align:center;
+}
+.teacher-face{background:var(--white);border:1px solid var(--line);}
+.teacher-face img{width:86px;height:112px;border-radius:var(--radius);object-fit:cover;margin-bottom:12px;border:3px solid var(--paper);}
+.teacher-face .ph-fallback{
+  width:86px;height:112px;border-radius:var(--radius);margin-bottom:12px;
+  background:var(--mist);color:var(--pine);
+  display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.5rem;
+}
+.teacher-face h3{font-size:1.02rem;margin-bottom:.15em;}
+.teacher-face .subj{color:var(--rust-dark);font-weight:600;font-size:.85rem;}
+.teacher-back{background:var(--pine);color:var(--cream);transform:rotateY(180deg);}
+.teacher-back h4{color:var(--gold);font-family:var(--sans);font-weight:700;font-size:.85rem;letter-spacing:.02em;margin-bottom:.5em;}
+.teacher-back p{color:#DCE6DE;font-size:.87rem;margin:0;}
+
+.view-all-wrap{text-align:center;margin-top:38px;}
+
+.teacher-modal{position:fixed;inset:0;z-index:300;display:none;}
+.teacher-modal.open{display:block;}
+.teacher-modal .modal-backdrop{position:absolute;inset:0;background:rgba(14,42,28,.78);backdrop-filter:blur(3px);animation:fadeIn .25s ease;}
+.teacher-modal .modal-panel{
+  position:relative;max-width:1040px;margin:5vh auto;background:var(--cream);
+  border-radius:var(--radius-lg);padding:38px;max-height:88vh;overflow-y:auto;
+  animation:modalIn .35s ease;
+}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes modalIn{from{opacity:0;transform:translateY(30px) scale(.97);}to{opacity:1;transform:translateY(0) scale(1);}}
+.modal-close{
+  position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;
+  background:var(--white);border:1px solid var(--line);display:flex;align-items:center;
+  justify-content:center;font-size:1.15rem;transition:.2s;
+}
+.modal-close:hover{background:var(--rust);color:var(--cream);border-color:var(--rust);}
+.modal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:22px;}
+@media (max-width:800px){.modal-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:480px){.modal-grid{grid-template-columns:1fr;}}
+.modal-grid .teacher-card{opacity:0;animation:teacherIn .5s ease forwards;}
+@keyframes teacherIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+/* ============================================================
+   Admin panel specific styles
+   ============================================================ */
+body.admin-body,#adminView.admin-body{background:var(--mist);}
+.admin-login{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  background:var(--pine-dark);
+  padding:20px;
+}
+.login-card{
+  background:var(--cream);width:100%;max-width:400px;border-radius:var(--radius-lg);
+  padding:40px 34px;box-shadow:0 30px 60px rgba(0,0,0,.35);
+}
+.login-card .brand{margin-bottom:26px;}
+.login-card h2{margin-bottom:.2em;}
+.login-card p.sub{color:var(--walnut-soft);font-size:.92rem;margin-bottom:26px;}
+.login-error{
+  background:#FBEAE6;color:#9A3B1F;padding:10px 14px;border-radius:var(--radius);
+  font-size:.87rem;margin-bottom:16px;display:none;
+}
+.login-error.show{display:block;}
+
+.admin-shell{display:flex;min-height:100vh;}
+.admin-side{
+  width:250px;flex:0 0 auto;background:var(--pine-dark);color:var(--cream);
+  padding:26px 18px;position:sticky;top:0;height:100vh;overflow-y:auto;
+}
+.admin-side .brand-text .name,.admin-side .brand-text .place{color:var(--cream);}
+.admin-side nav{margin-top:30px;}
+.admin-side nav a{
+  display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:var(--radius);
+  color:#CBD8CE;font-size:.9rem;font-weight:600;margin-bottom:2px;transition:background .2s ease,color .2s ease;
+}
+.admin-side nav a:hover{background:rgba(251,247,238,.08);color:var(--cream);}
+.admin-side nav a.active{background:var(--rust);color:var(--cream);}
+.admin-main{flex:1;padding:34px 40px;max-width:calc(100% - 250px);}
+.admin-topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:12px;}
+.admin-panel{
+  background:var(--white);border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:26px;margin-bottom:24px;
+}
+.admin-panel h3{margin-bottom:4px;}
+.admin-panel .hint{color:var(--walnut-soft);font-size:.85rem;margin-bottom:18px;}
+.admin-list-item{
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+  padding:14px 4px;border-bottom:1px solid var(--line);
+}
+.admin-list-item:last-child{border-bottom:none;}
+.admin-list-item .info b{display:block;font-size:.95rem;}
+.admin-list-item .info span{color:var(--walnut-soft);font-size:.85rem;}
+.admin-actions{display:flex;gap:8px;flex:0 0 auto;}
+.icon-btn{
+  width:34px;height:34px;border-radius:var(--radius);border:1px solid var(--line);
+  background:var(--white);display:flex;align-items:center;justify-content:center;
+  color:var(--walnut-soft);transition:.2s;
+}
+.icon-btn:hover{background:var(--pine);color:var(--cream);border-color:var(--pine);}
+.icon-btn.danger:hover{background:#B3261E;border-color:#B3261E;}
+.admin-form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media (max-width:640px){.admin-form-row{grid-template-columns:1fr;}.admin-shell{flex-direction:column;}.admin-side{width:100%;height:auto;position:relative;}.admin-main{max-width:100%;padding:24px;}}
+.toast{
+  position:fixed;top:20px;right:20px;background:var(--pine-dark);color:var(--cream);
+  padding:13px 20px;border-radius:var(--radius);box-shadow:0 10px 25px rgba(0,0,0,.25);
+  z-index:200;opacity:0;transform:translateY(-10px);transition:.3s;font-size:.9rem;
+}
+.toast.show{opacity:1;transform:translateY(0);}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:26px;}
+@media (max-width:800px){.stat-grid{grid-template-columns:repeat(2,1fr);}}
+.stat-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-lg);padding:20px;}
+.stat-card .num{font-family:var(--serif);font-size:2rem;color:var(--pine-dark);}
+.stat-card .lbl{color:var(--walnut-soft);font-size:.85rem;}
+
+/* ============================================================
+   MOBILE POLISH — tighter spacing, bigger tap targets, and
+   layout refinements for phones (applies on top of the rules
+   above; kept at the end of the file so it wins the cascade).
+   ============================================================ */
+@media (max-width:640px){
+  .container{padding:0 18px;}
+  section{padding:56px 0;}
+  .section-head{margin-bottom:32px;}
+  .section-head h2{font-size:1.6rem;}
+
+  /* header / brand */
+  .nav-row{padding:12px 18px;}
+  .brand-mark{width:40px;height:40px;font-size:1rem;}
+  .brand-text .name{font-size:.98rem;letter-spacing:.02em;}
+  .brand-text .place{font-size:.7rem;}
+
+  /* banners / strips */
+  .search-bar-row .container{padding-top:8px;padding-bottom:8px;}
+  .site-search input{font-size:.88rem;padding:9px 40px 9px 14px;}
+  .highlights-track .m-item{padding:0 20px;font-size:.85rem;}
+  .admission-banner .container{padding:9px 18px;gap:10px;}
+  .admission-banner .txt{font-size:.82rem;}
+  .admission-banner a.btn{padding:6px 14px;font-size:.76rem;}
+  .topstrip .container{padding-top:6px;padding-bottom:6px;}
+  .topstrip .label{display:none;}
+
+  /* hero */
+  .hero{min-height:78vh;}
+  .hero-content{padding:76px 20px 56px;}
+  .hero-eyebrow{font-size:.78rem;margin-bottom:14px;}
+  .hero p.lead{font-size:1rem;margin-bottom:1.6em;}
+  .hero-actions{display:flex;flex-direction:column;gap:12px;width:100%;}
+  .hero-actions .btn{width:100%;justify-content:center;}
+
+  /* cards & grids */
+  .card{padding:20px;}
+  .grid{gap:16px;}
+
+  /* notifications */
+  .notice-item{gap:14px;padding:16px 2px;}
+  .notice-date{flex-basis:58px;padding:6px 2px;font-size:.75rem;}
+
+  /* carousel */
+  .carousel-slide{width:78vw;}
+  .topper-card{width:150px;}
+  .toppers-rows{gap:14px;margin-top:30px;}
+
+  /* spotlight */
+  .spotlight-col{gap:10px;}
+  .spotlight-main{aspect-ratio:16/11;}
+
+  /* staff / teacher cards */
+  .staff-photo{max-width:130px;}
+  .teacher-card{height:240px;}
+
+  /* modals */
+  .modal-panel,.adm-form-panel{padding:24px 18px;}
+
+  /* admission section */
+  .adm-steps{padding:4px 18px;}
+  .adm-step{gap:12px;padding:16px 0;}
+  .adm-box{padding:18px;}
+
+  /* footer */
+  .footer-top{padding:44px 0 28px;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:8px;}
+
+  /* floating buttons */
+  .to-top{width:44px;height:44px;right:16px;bottom:16px;}
+
+  /* tables */
+  table.mns-table th,table.mns-table td{padding:11px 14px;font-size:.85rem;}
+}
+
+@media (max-width:400px){
+  .hero h1{font-size:1.9rem;}
+  .brand-text .place{display:none;}
+  .stat-grid{grid-template-columns:1fr;}
+}
+
+</style>
+</head>
+<body>
+
+<div id="siteView">
+
+
+<!-- ============ ADMISSION BANNER (above the menu) ============ -->
+<div class="admission-banner" id="admissionBanner">
+  <div class="container">
+    <span class="txt" id="admBannerText">🎓 <strong>Admissions Open</strong> for Session 2026–27</span>
+    <a href="#admissions" class="btn btn-sm">Apply Now</a>
+  </div>
+</div>
+
+<!-- ============ TOP NOTIFICATION STRIP ============ -->
+<div class="topstrip">
+  <div class="container">
+    <span class="dot"></span>
+    <span class="label">Latest</span>
+    <div class="ticker-track">
+      <div class="ticker-items" id="tickerItems"><span>Loading notifications…</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HEADER / NAV ============ -->
+<header class="site">
+  <div class="nav-row">
+    <a href="#home" class="brand">
+      <span class="brand-mark">MS</span>
+      <span class="brand-text">
+        <span class="name" id="hName">My New School</span>
+        <span class="place" id="hPlace">Drugmulla, Kupwara</span>
+      </span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#admissions">Admissions</a></li>
+        <li><a href="#examination">Examination</a></li>
+        <li><a href="#syllabus">Syllabus<span class="nav-badge" id="navBadgeSyllabus" hidden>New</span></a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#notifications">Notifications<span class="nav-badge" id="navBadgeNotif" hidden>New</span></a></li>
+        <li><a href="#recruitment">Recruitment</a></li>
+        <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span></button>
+  </div>
+  <div class="search-bar-row">
+    <div class="container">
+      <div class="site-search">
+        <input type="text" id="siteSearchInput" placeholder="Search notifications, staff, syllabus, exams, and more…" autocomplete="off">
+        <span class="search-icon">🔍</span>
+        <div class="search-results" id="searchResults"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <video id="heroVideo" autoplay muted loop playsinline style="display:none;"></video>
+    <div class="fallback" id="heroFallback"></div>
+  </div>
+  <div class="hero-particles" aria-hidden="true">
+    <span class="leaf" style="left:6%;width:14px;height:14px;background:var(--gold);animation-duration:13s;animation-delay:0s;"></span>
+    <span class="leaf" style="left:16%;width:10px;height:10px;background:var(--rust);animation-duration:17s;animation-delay:2s;"></span>
+    <span class="leaf" style="left:28%;width:16px;height:16px;background:var(--pine-light);animation-duration:15s;animation-delay:5s;"></span>
+    <span class="leaf" style="left:42%;width:12px;height:12px;background:var(--gold);animation-duration:19s;animation-delay:1s;"></span>
+    <span class="leaf" style="left:55%;width:10px;height:10px;background:var(--rust);animation-duration:14s;animation-delay:6s;"></span>
+    <span class="leaf" style="left:67%;width:15px;height:15px;background:var(--pine-light);animation-duration:18s;animation-delay:3s;"></span>
+    <span class="leaf" style="left:78%;width:11px;height:11px;background:var(--gold);animation-duration:16s;animation-delay:4.5s;"></span>
+    <span class="leaf" style="left:90%;width:13px;height:13px;background:var(--rust);animation-duration:20s;animation-delay:7s;"></span>
+    <span class="ring" style="width:220px;height:220px;left:-60px;top:10%;animation-duration:9s;"></span>
+    <span class="ring" style="width:160px;height:160px;right:-40px;bottom:8%;animation-duration:11s;"></span>
+  </div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">★ Drugmulla, Kupwara, J&amp;K</span>
+    <h1 id="heroTitle">My New School</h1>
+    <p class="lead" id="heroTag">Rooted in the valley, reaching beyond it.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">🏛️ Estd. <span id="heroEstYear">2005</span></span>
+      <span class="hero-badge" id="heroAffiliation">Affiliated to J&amp;K Board of School Education</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">Enquire About Admission</a>
+      <a href="#gallery" class="btn btn-ghost">See School Life</a>
+    </div>
+  </div>
+  <div class="hero-ridges">
+    <svg class="ridge on-cream" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,60 L0,35 L100,15 L220,40 L340,10 L460,30 L600,5 L740,32 L860,12 L1000,38 L1120,18 L1200,40 L1200,60 Z"/></svg>
+  </div>
+</section>
+
+<!-- ============ HIGHLIGHTS MARQUEE ============ -->
+<div class="highlights-band marquee-wrap">
+  <div class="marquee-track highlights-track" id="highlightsMarquee"></div>
+</div>
+
+<!-- ============ LATEST UPDATES (top panel) ============ -->
+<section id="latestUpdates">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-plain" id="latestEyebrowText">Latest Updates</div>
+      <h2 id="latestTitleText">What's Happening at Our School</h2>
+    </div>
+    <div class="latest-grid" id="latestGrid"></div>
+    <div class="latest-more"><a href="#notifications" class="btn btn-outline">View All Notifications</a></div>
+  </div>
+</section>
+
+<!-- ============ ABOUT / HIGHLIGHTS ============ -->
+<section class="section-cream" id="about">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-plain">About Us</div>
+      <h2>A school shaped by its valley</h2>
+      <p>My New School, Drugmulla sits in the heart of Kupwara — where the school day still opens with the sound of the assembly line, walnut trees along the boundary wall, and a teaching staff that has watched most of the village grow up. We hold to a simple aim: strong fundamentals, wide participation, and a school that families can rely on.</p>
+    </div>
+    <div class="grid grid-4">
+      <div class="card reveal" style="transition-delay:0s;">
+        <div class="card-icon">🎓</div>
+        <h3>Academics</h3>
+        <p>Structured teaching from the primary wing through the secondary board classes.</p>
+      </div>
+      <div class="card reveal" style="transition-delay:.1s;">
+        <div class="card-icon">🚌</div>
+        <h3>Transport</h3>
+        <p>Multiple bus routes covering Drugmulla and neighbouring areas.</p>
+      </div>
+      <div class="card reveal" style="transition-delay:.2s;">
+        <div class="card-icon">🏆</div>
+        <h3>Activities</h3>
+        <p>Sports, annual day, science exhibitions and inter-house competitions.</p>
+      </div>
+      <div class="card reveal" style="transition-delay:.3s;">
+        <div class="card-icon">🤝</div>
+        <h3>Community</h3>
+        <p>Regular PTMs and open feedback from the parents who trust us with their children.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FACILITIES ============ -->
+<section class="section-mist" id="facilities">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow-plain">Why Choose Us</div>
+      <h2>Our Facilities</h2>
+      <p>What we've built so students have what they need to actually learn.</p>
+    </div>
+    <div class="grid grid-3" id="facilitiesGrid"></div>
+  </div>
+</section>
+
+<!-- ============ VISION & MISSION ============ -->
+<section id="visionMission">
+  <div class="container">
+    <div class="vm-grid">
+      <div class="vm-card">
+        <div class="vm-icon">🎯</div>
+        <h3>Our Vision</h3>
+        <p id="visionText"></p>
+      </div>
+      <div class="vm-card">
+        <div class="vm-icon">🧭</div>
+        <h3>Our Mission</h3>
+        <p id="missionText"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRINCIPAL'S MESSAGE ============ -->
+<section class="section-mist" id="leaderMessage">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow-plain">From the Desk Of</div>
+      <h2>Principal's Message</h2>
+    </div>
+    <div class="leader-panel">
+      <div class="leader-photo" id="leaderPhoto"></div>
+      <div class="leader-text">
+        <span class="mark">“</span>
+        <p class="leader-msg" id="leaderMsgText"></p>
+        <div class="leader-name" id="leaderNameText"></div>
+        <div class="leader-role" id="leaderRoleText"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ridge on-mist" style="transform:rotate(180deg);"><svg viewBox="0 0 1200 46" preserveAspectRatio="none" style="width:100%;height:46px;"><path d="M0,46 L0,20 L120,5 L240,28 L380,8 L520,25 L660,4 L800,26 L940,10 L1080,30 L1200,15 L1200,46 Z" fill="#E9EDE7"/></svg></div>
+
+<!-- ============ ADMISSIONS (full detail) ============ -->
+<section id="admissions">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-plain">Join Us</div>
+      <h2>Admissions</h2>
+      <p class="adm-intro" id="admIntro"></p>
+    </div>
+    <div class="adm-grid">
+      <div>
+        <h3 style="font-size:1.1rem;margin-bottom:16px;">How to Apply</h3>
+        <div class="adm-steps" id="admSteps"></div>
+        <h3 style="font-size:1.1rem;margin:32px 0 16px;">Eligibility</h3>
+        <div class="adm-box" style="padding:22px 26px;">
+          <p id="admEligibility" style="color:var(--walnut-soft);margin:0;white-space:pre-line;"></p>
+        </div>
+      </div>
+      <div class="adm-side">
+        <div class="adm-box adm-dates">
+          <h4>Important Dates — <span id="admSession"></span></h4>
+          <ul id="admDatesList"></ul>
+        </div>
+        <div class="adm-box adm-docs">
+          <h4>Documents Required</h4>
+          <ul id="admDocsList"></ul>
+        </div>
+        <div class="adm-box adm-fees">
+          <h4>Fee Structure</h4>
+          <ul id="admFeesList"></ul>
+        </div>
+        <div class="adm-cta">
+          <h3 style="color:var(--cream);font-size:1.05rem;">Ready to apply?</h3>
+          <p id="admNote"></p>
+          <a href="#admissionForm" class="btn btn-primary" style="width:100%;justify-content:center;">Fill Admission Form</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="adm-form-panel" id="admissionForm">
+      <div class="section-head center">
+        <div class="eyebrow-plain">Admission Enquiry Form</div>
+        <h2>Apply for Admission</h2>
+        <p>Fill in the details below and our office will get in touch to complete the process.</p>
+      </div>
+      <div class="form-msg ok" id="admFormMsg">Thank you — your admission enquiry has been received. Our office will contact you shortly.</div>
+      <form id="admissionEnquiryForm">
+        <div class="adm-form-grid">
+          <div class="form-field"><label for="aStudentName">Student's Full Name</label><input type="text" id="aStudentName" required></div>
+          <div class="form-field"><label for="aDob">Date of Birth</label><input type="date" id="aDob" required></div>
+          <div class="form-field"><label for="aClass">Class Applying For</label><input type="text" id="aClass" placeholder="e.g. Nursery, Class 3" required></div>
+          <div class="form-field"><label for="aGender">Gender</label>
+            <select id="aGender" required>
+              <option value="">Select</option>
+              <option>Male</option><option>Female</option><option>Other</option>
+            </select>
+          </div>
+          <div class="form-field"><label for="aParent">Parent / Guardian Name</label><input type="text" id="aParent" required></div>
+          <div class="form-field"><label for="aPhone">Phone Number</label><input type="tel" id="aPhone" required></div>
+          <div class="form-field"><label for="aEmail">Email (optional)</label><input type="email" id="aEmail"></div>
+          <div class="form-field"><label for="aPrevSchool">Previous School (if any)</label><input type="text" id="aPrevSchool"></div>
+          <div class="form-field full"><label for="aAddress">Address</label><input type="text" id="aAddress" required></div>
+          <div class="form-field full"><label for="aMsg">Additional Notes (optional)</label><textarea id="aMsg" rows="4"></textarea></div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Admission Enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPOTLIGHT: side photos + centre video ============ -->
+<section class="section-mist">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow-plain" id="spotlightEyebrowText">School Life, In the Moment</div>
+      <h2 id="spotlightTitleText">A closer look inside our school</h2>
+    </div>
+    <div class="spotlight">
+      <div class="spotlight-col" id="spotlightLeft"></div>
+      <div class="spotlight-main" id="spotlightMain"></div>
+      <div class="spotlight-col" id="spotlightRight"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NOTIFICATIONS ============ -->
+<section id="notifications">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-plain">Stay Informed</div>
+      <h2>Notifications</h2>
+      <p>Admissions, exam dates, PTMs and school announcements, posted as they happen.</p>
+    </div>
+    <div class="notice-list" id="noticeList"></div>
+  </div>
+</section>
+
+<!-- ============ TEACHERS ============ -->
+<section class="section-mist" id="teachers">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow-plain">People</div>
+      <h2>Our Teachers</h2>
+      <p>Hover a card to see what each teacher teaches. Click below to see the full staff room.</p>
+    </div>
+    <div class="grid grid-4" id="teacherGrid"></div>
+    <div class="view-all-wrap">
+      <button class="btn btn-primary" id="viewAllTeachersBtn">Click Here to View All Teachers</button>
+    </div>
+  </div>
+</section>
+
+<div class="teacher-modal" id="teacherModal" aria-hidden="true">
+  <div class="modal-backdrop" id="teacherModalBackdrop"></div>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-label="All Teachers">
+    <button class="modal-close" id="teacherModalClose" aria-label="Close">✕</button>
+    <div class="eyebrow-plain">People</div>
+    <h2>All Teachers</h2>
+    <div class="modal-grid" id="teacherModalGrid"></div>
+  </div>
+</div>
+
+<!-- ============ EXAMINATION ============ -->
+<section class="section-mist" id="examination">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-plain">Academics</div>
+      <h2>Examination</h2>
+      <p>Upcoming examinations and schedules for all classes.</p>
+    </div>
+    <div class="grid grid-3" id="examGrid"></div>
+  </div>
+</section>
+
+<!-- ============ SYLLABUS ============ -->
+<section id="syllabus">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-plain">Academics</div>
+      <h2>Syllabus</h2>
+      <p>Class-wise syllabus for the current session.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="mns-table">
+        <thead><tr><th>Class</th><th>Subjects</th><th>Document</th></tr></thead>
+        <tbody id="syllabusBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESULTS ============ -->
+<section class="section-mist" id="results">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-plain">Academics</div>
+      <h2>Results</h2>
+      <p>Session-wise class results.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="mns-table">
+        <thead><tr><th>Class</th><th>Session</th><th>Result</th></tr></thead>
+        <tbody id="resultsBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROLL STATEMENT ============ -->
+<section id="roll">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-plain">Records</div>
+      <h2>Roll Statement</h2>
+      <p>Current class-wise student strength for this session.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="mns-table">
+        <thead><tr><th>Class</th><th>Boys</th><th>Girls</th><th>Total</th></tr></thead>
+        <tbody id="rollBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRANSPORT / BUSES ============ -->
+<section class="section-mist" id="buses">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-plain">Transport</div>
+      <h2>Bus Routes</h2>
+      <p>Routes and stops covered by the school transport fleet.</p>
+    </div>
+    <div class="grid grid-3" id="busGrid"></div>
+  </div>
+</section>
+
+<!-- ============ STAFF ============ -->
+<section id="staff">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow-plain">People</div>
+      <h2>Our Staff</h2>
+      <p>The teachers and staff who run the school day to day.</p>
+    </div>
+    <div class="grid grid-4" id="staffGrid"></div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="section-mist" id="gallery">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-plain">Gallery</div>
+      <h2>Photo Gallery</h2>
+      <p>Moments from school life — drag or use the arrows to browse.</p>
+    </div>
+    <div class="carousel">
+      <div class="carousel-track" id="photoTrack"></div>
+      <div class="carousel-nav">
+        <button id="carPrev" aria-label="Previous">‹</button>
+        <button id="carNext" aria-label="Next">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OUR TOPPERS ============ -->
+<section id="toppers" class="section-pine">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow-plain">Proud Moments</div>
+      <h2>Our Toppers</h2>
+      <p>The students who led the way this session.</p>
+    </div>
+  </div>
+  <div class="toppers-rows">
+    <div class="marquee-wrap">
+      <div class="marquee-track toppers-track" id="toppersRow1"></div>
+    </div>
+  </div>
+</section>
+
+<section id="videos">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-plain">Gallery</div>
+      <h2>Video Gallery</h2>
+      <p>Highlights from our events and activities.</p>
+    </div>
+    <div class="grid grid-3" id="videoGrid"></div>
+  </div>
+</section>
+
+<!-- ============ RECRUITMENT ============ -->
+<section class="section-pine" id="recruitment">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-plain">Careers</div>
+      <h2>Recruitment</h2>
+      <p>Current openings at My New School, Drugmulla.</p>
+    </div>
+    <div class="grid grid-3" id="recruitGrid"></div>
+  </div>
+</section>
+
+<!-- ============ PARENTS FEEDBACK ============ -->
+<section id="feedback">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow-plain">Parents Speak</div>
+      <h2>Feedback From Our Parents</h2>
+    </div>
+    <div class="marquee-wrap">
+      <div class="marquee-track feedback-marquee-track" id="feedbackGrid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section-mist" id="contact">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-plain">Get In Touch</div>
+      <h2>Contact Us</h2>
+      <p>Questions about admissions, transport or anything else — reach out.</p>
+    </div>
+    <div class="contact-wrap">
+      <div>
+        <div class="form-msg ok" id="formMsg">Thank you — your message has been received.</div>
+        <form id="contactForm">
+          <div class="admin-form-row">
+            <div class="form-field"><label for="cName">Full Name</label><input type="text" id="cName" required></div>
+            <div class="form-field"><label for="cPhone">Phone</label><input type="tel" id="cPhone" required></div>
+          </div>
+          <div class="form-field"><label for="cEmail">Email</label><input type="email" id="cEmail"></div>
+          <div class="form-field"><label for="cSubject">Subject</label><input type="text" id="cSubject" required></div>
+          <div class="form-field"><label for="cMsg">Message</label><textarea id="cMsg" rows="5" required></textarea></div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+      <div>
+        <div class="contact-info-item"><div class="ic">📍</div><div><h4>Address</h4><p id="ciAddress"></p></div></div>
+        <div class="contact-info-item"><div class="ic">📞</div><div><h4>Phone</h4><p id="ciPhone"></p></div></div>
+        <div class="contact-info-item"><div class="ic">✉️</div><div><h4>Email</h4><p id="ciEmail"></p></div></div>
+        <div class="contact-info-item"><div class="ic">🕒</div><div><h4>Office Hours</h4><p id="ciHours"></p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site">
+  <div class="ridge on-walnut" style="transform:scaleY(-1);"><svg viewBox="0 0 1200 46" preserveAspectRatio="none" style="width:100%;height:46px;display:block;"><path d="M0,0 L0,26 L120,41 L240,18 L380,38 L520,21 L660,42 L800,20 L940,36 L1080,16 L1200,31 L1200,0 Z" fill="#2E2117"/></svg></div>
+  <div class="footer-top">
+    <div class="container footer-grid">
+      <div>
+        <a href="#home" class="brand" style="margin-bottom:14px;">
+          <span class="brand-mark">MS</span>
+          <span class="brand-text"><span class="name">My New School</span><span class="place">Drugmulla, Kupwara</span></span>
+        </a>
+        <p id="footerTagline">Rooted in the valley, reaching beyond it.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#admissions">Admissions</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#facilities">Facilities</a></li>
+          <li><a href="#leaderMessage">Principal's Message</a></li>
+          <li><a href="#staff">Our Staff</a></li>
+          <li><a href="#teachers">Our Teachers</a></li>
+          <li><a href="#buses">Bus Routes</a></li>
+          <li><a href="#roll">Roll Statement</a></li>
+          <li><a href="#toppers">Our Toppers</a></li>
+          <li><a href="#feedback">Parents Feedback</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Academics</h4>
+        <ul>
+          <li><a href="#examination">Examination</a></li>
+          <li><a href="#syllabus">Syllabus</a></li>
+          <li><a href="#results">Results</a></li>
+          <li><a href="#notifications">Notifications</a></li>
+          <li><a href="#recruitment">Recruitment</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Reach Us</h4>
+        <p id="footerAddress"></p>
+        <p id="footerPhone"></p>
+        <p id="footerEmail"></p>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="yearNow"></span> My New School, Drugmulla. All rights reserved.</span>
+    <a href="#admin">Staff Login</a>
+  </div>
+</footer>
+
+<a href="#home" class="to-top" id="toTop" aria-label="Back to top">↑</a>
+
+
+</div>
+
+<div id="adminView" class="admin-body" style="display:none;">
+
+
+<!-- ============ LOGIN ============ -->
+<div class="admin-login" id="loginScreen">
+  <div class="login-card">
+    <div class="brand">
+      <span class="brand-mark">MS</span>
+      <span class="brand-text"><span class="name">My New School</span><span class="place">Drugmulla, Kupwara</span></span>
+    </div>
+    <h2>Admin Login</h2>
+    <p class="sub">Sign in to edit school website content.</p>
+    <div class="login-error" id="loginError">Incorrect username or password.</div>
+    <form id="loginForm">
+      <div class="form-field"><label for="luser">Username</label><input type="text" id="luser" autocomplete="username" required></div>
+      <div class="form-field"><label for="lpass">Password</label><input type="password" id="lpass" autocomplete="current-password" required></div>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Log In</button>
+    </form>
+    <p class="sub" style="margin-top:18px;margin-bottom:0;"><a href="#" style="color:var(--pine);font-weight:600;">← Back to website</a></p>
+  </div>
+</div>
+
+<!-- ============ DASHBOARD ============ -->
+<div class="admin-shell" id="dashboard" style="display:none;">
+  <aside class="admin-side">
+    <a href="#" class="brand" style="margin-bottom:6px;">
+      <span class="brand-mark">MS</span>
+      <span class="brand-text"><span class="name">My New School</span><span class="place">Admin Panel</span></span>
+    </a>
+    <nav id="sideNav"></nav>
+  </aside>
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <h2 id="panelTitle" style="margin:0;">Dashboard</h2>
+      <div style="display:flex;gap:10px;">
+        <a href="#" class="btn btn-sm btn-outline" target="_blank">View Site</a>
+        <button class="btn btn-sm btn-primary" id="logoutBtn">Log Out</button>
+      </div>
+    </div>
+    <div id="panelBody"></div>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+
+</div>
+
+<script>
+/* ============================================================
+   MY NEW SCHOOL, Drugmulla — shared data layer
+   All content lives in localStorage under the "mns_" prefix so
+   the public site and the admin dashboard (admin.html) stay in
+   sync in the same browser. Replace this file with real API
+   calls if/when a server backend is added — every other file
+   only talks to the functions below, never to localStorage
+   directly, so that swap only touches this file.
+   ============================================================ */
+
+const MNS_KEYS = {
+  settings: "mns_settings",
+  notifications: "mns_notifications",
+  recruitment: "mns_recruitment",
+  syllabus: "mns_syllabus",
+  examination: "mns_examination",
+  results: "mns_results",
+  buses: "mns_buses",
+  staff: "mns_staff",
+  teachers: "mns_teachers",
+  photos: "mns_gallery_photos",
+  videos: "mns_gallery_videos",
+  feedback: "mns_feedback",
+  contacts: "mns_contact_submissions",
+  auth: "mns_auth",
+  admission: "mns_admission",
+  admissionApps: "mns_admission_apps",
+  toppers: "mns_toppers",
+  leaderMessage: "mns_leader_message",
+  facilities: "mns_facilities",
+};
+
+const MNS_DEFAULTS = {
+  settings: {
+    schoolName: "My New School Drugmulla",
+    place: "Kupwara, Jammu & Kashmir",
+    tagline: "Rooted in the valley, reaching beyond it.",
+    phone: "+91 XXXXX XXXXX",
+    email: "info@mynewschooldrugmulla.edu.in",
+    address: "Drugmulla, Kupwara, Jammu & Kashmir, 193222",
+    officeHours: "Monday – Saturday, 9:00 AM – 2:00 PM",
+    heroVideo: "",
+    centreVideo: "",
+    establishedYear: "2005",
+    affiliation: "Affiliated to J&K Board of School Education",
+    visionText: "To be a school the whole valley points to with pride — where every child leaves confident, capable, and grounded in good values.",
+    missionText: "To provide quality, affordable education in a safe environment, taught by a caring staff who know every student by name.",
+    spotlightEyebrow: "School Life, In the Moment",
+    spotlightTitle: "A closer look inside our school",
+    latestEyebrow: "Latest Updates",
+    latestTitle: "What's Happening at Our School",
+  },
+  notifications: [
+    { id: 1, title: "Winter session admissions now open", date: "2026-09-01", text: "Forms available at the front office, 9am–2pm on all working days.", pdf: "" },
+    { id: 2, title: "PTM scheduled for Class 6–8", date: "2026-09-10", text: "Parent-teacher meeting in the main hall, 10am onward.", pdf: "" },
+    { id: 3, title: "Annual Day rehearsals begin", date: "2026-09-15", text: "All participating students to report to the auditorium after class.", pdf: "" },
+  ],
+  recruitment: [
+    { id: 1, title: "Mathematics Teacher (Middle School)", date: "2026-09-01", desc: "B.Ed with Mathematics as a teaching subject, 2+ years' experience preferred.", link: "" },
+    { id: 2, title: "School Bus Driver", date: "2026-08-20", desc: "Valid HMV license, minimum 5 years' driving experience, local candidates preferred.", link: "" },
+  ],
+  syllabus: [
+    { id: 1, class: "Class 1–5", subject: "All Subjects", link: "" },
+    { id: 2, class: "Class 6–8", subject: "All Subjects", link: "" },
+    { id: 3, class: "Class 9–10", subject: "All Subjects (Board Pattern)", link: "" },
+  ],
+  examination: [
+    { id: 1, title: "First Term Examination", date: "2026-10-05", desc: "Classes 1–10, datesheet to follow." },
+    { id: 2, title: "Half-Yearly Examination", date: "2026-12-10", desc: "All classes, syllabus covered till November end." },
+  ],
+  results: [
+    { id: 1, class: "Class 10", session: "2025–26", link: "" },
+    { id: 2, class: "Class 8", session: "2025–26", link: "" },
+  ],
+  buses: [
+    { id: 1, route: "Route 1", area: "Drugmulla – Kupwara Town", driver: "Assigned Driver", stops: "Drugmulla, Chowgam, Trehgam, Kupwara" },
+    { id: 2, route: "Route 2", area: "Drugmulla – Sogam", driver: "Assigned Driver", stops: "Drugmulla, Batergam, Sogam" },
+  ],
+  staff: [
+    { id: 1, name: "Chairman's Name", role: "Chairman", photo: "" },
+    { id: 2, name: "Vice Chairman's Name", role: "Vice Chairman", photo: "" },
+    { id: 3, name: "Advisor's Name", role: "Advisor", photo: "" },
+    { id: 4, name: "Principal's Name", role: "Principal", photo: "" },
+    { id: 5, name: "Vice Principal's Name", role: "Vice Principal", photo: "" },
+  ],
+  admission: {
+    sessionYear: "2026–27",
+    bannerText: "Admissions Open for Session 2026–27 — Limited Seats",
+    showBanner: true,
+    intro: "My New School, Drugmulla welcomes applications from Nursery through Class 10 for the new session. Seats are filled on a first-come, first-served basis after document verification.",
+    eligibility: "Nursery: child must turn 3 years by 31 March.\nClass 1: child must turn 5 years by 31 March.\nClass 2 and above: based on marks/report card of the previous class and an interaction with the child.",
+    documents: "Birth certificate (original + photocopy)\nTransfer certificate from previous school (for Class 2 and above)\nReport card of the last class attended\n4 passport-size photographs of the child\nAadhar card copy of child and parents",
+    process: "Collect the admission form from the school office or request one via the contact form.\nSubmit the completed form along with the required documents.\nAttend a short interaction/assessment for the child (for Class 1 and above).\nReceive confirmation and pay the admission fee to secure the seat.",
+    fees: "Admission Fee: as per class (details available at the office)\nTuition Fee: charged monthly/quarterly, informed at the time of admission\nTransport Fee: applicable only if using the school bus service",
+    dates: "Forms Available From: 1 September 2026\nLast Date to Apply: 30 September 2026\nDocument Verification: Ongoing on working days",
+    note: "For any admission-related query, use the Contact Us form below or call the school office directly.",
+  },
+  teachers: [
+    { id: 1, name: "Teacher's Name", subject: "Mathematics", photo: "", bio: "Teaches Mathematics to Classes 6–10." },
+    { id: 2, name: "Teacher's Name", subject: "English", photo: "", bio: "Teaches English to Classes 1–5." },
+    { id: 3, name: "Teacher's Name", subject: "Science", photo: "", bio: "Teaches Science to Classes 6–8." },
+    { id: 4, name: "Teacher's Name", subject: "Social Science", photo: "", bio: "Teaches Social Science to Classes 6–10." },
+  ],
+  photos: [
+    { id: 1, url: "", caption: "Annual Day" },
+    { id: 2, url: "", caption: "Science Exhibition" },
+    { id: 3, url: "", caption: "Sports Day" },
+    { id: 4, url: "", caption: "Independence Day" },
+  ],
+  videos: [
+    { id: 1, url: "", caption: "Annual Day Highlights" },
+  ],
+  feedback: [
+    { id: 1, name: "A Parent", text: "Wonderful, caring teachers. My child looks forward to school every day.", approved: true },
+  ],
+  contacts: [],
+  auth: { username: "admin", password: "mns@drugmulla" },
+  admissionApps: [],
+  toppers: [
+    { id: 1, name: "Topper's Name", photo: "", achievement: "Class 10 — 97%" },
+    { id: 2, name: "Topper's Name", photo: "", achievement: "Class 10 — 95%" },
+    { id: 3, name: "Topper's Name", photo: "", achievement: "Class 9 — 94%" },
+    { id: 4, name: "Topper's Name", photo: "", achievement: "Class 8 — 96%" },
+    { id: 5, name: "Topper's Name", photo: "", achievement: "Class 8 — 93%" },
+    { id: 6, name: "Topper's Name", photo: "", achievement: "Class 7 — 95%" },
+  ],
+  leaderMessage: {
+    name: "Principal's Name",
+    role: "Principal",
+    photo: "",
+    message: "Every child who walks through our gates carries the hopes of a family and the promise of the valley's future. Our job is to match that trust with real teaching, real discipline, and real care — every single day. I invite you to visit us, ask questions, and see the school for yourself.",
+  },
+  facilities: [
+    { id: 1, icon: "📚", title: "Library", description: "A quiet, well-stocked reading room for every class." },
+    { id: 2, icon: "🔬", title: "Science Labs", description: "Dedicated physics, chemistry and biology labs for hands-on learning." },
+    { id: 3, icon: "💻", title: "Computer Lab", description: "Computer literacy classes from an early age." },
+    { id: 4, icon: "🖥️", title: "Smart Classrooms", description: "Digital teaching aids alongside traditional classroom instruction." },
+    { id: 5, icon: "🏐", title: "Playground & Sports", description: "Open grounds for sports, PT and annual athletics." },
+    { id: 6, icon: "🚌", title: "Transport Facility", description: "Bus routes covering Drugmulla and neighbouring areas." },
+  ],
+};
+
+function mnsGet(key) {
+  try {
+    const raw = localStorage.getItem(MNS_KEYS[key]);
+    if (raw === null) {
+      const def = MNS_DEFAULTS[key];
+      localStorage.setItem(MNS_KEYS[key], JSON.stringify(def));
+      return JSON.parse(JSON.stringify(def));
+    }
+    return JSON.parse(raw);
+  } catch (e) {
+    console.error("mnsGet failed for", key, e);
+    return MNS_DEFAULTS[key];
+  }
+}
+
+function mnsSet(key, value) {
+  try {
+    localStorage.setItem(MNS_KEYS[key], JSON.stringify(value));
+    return true;
+  } catch (e) {
+    console.error("mnsSet failed for", key, e);
+    return false;
+  }
+}
+
+function mnsNextId(list) {
+  return list.reduce((m, i) => Math.max(m, i.id || 0), 0) + 1;
+}
+
+function mnsInitAll() {
+  Object.keys(MNS_KEYS).forEach((k) => mnsGet(k));
+}
+
+function mnsIsLoggedIn() {
+  return sessionStorage.getItem("mns_session") === "active";
+}
+
+function mnsLogin(user, pass) {
+  const auth = mnsGet("auth");
+  if (user === auth.username && pass === auth.password) {
+    sessionStorage.setItem("mns_session", "active");
+    return true;
+  }
+  return false;
+}
+
+function mnsLogout() {
+  sessionStorage.removeItem("mns_session");
+}
+
+</script>
+<script>
+(function(){
+  mnsInitAll();
+  const settings = mnsGet("settings");
+
+  /* ---------- helpers (declared early since used below) ---------- */
+  function esc(s){ return (s||"").toString().replace(/[&<>"']/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m])); }
+
+  /* ---------- header / brand / footer text ---------- */
+  document.getElementById("hName").textContent = settings.schoolName;
+  document.getElementById("hPlace").textContent = settings.place;
+  document.getElementById("heroTitle").textContent = settings.schoolName;
+  document.getElementById("heroTag").textContent = settings.tagline;
+  document.getElementById("heroEstYear").textContent = settings.establishedYear;
+  document.getElementById("heroAffiliation").textContent = settings.affiliation;
+  document.getElementById("footerTagline").textContent = settings.tagline;
+  document.getElementById("footerAddress").textContent = settings.address;
+  document.getElementById("footerPhone").textContent = settings.phone;
+  document.getElementById("footerEmail").textContent = settings.email;
+  document.getElementById("ciAddress").textContent = settings.address;
+  document.getElementById("ciPhone").textContent = settings.phone;
+  document.getElementById("ciEmail").textContent = settings.email;
+  document.getElementById("ciHours").textContent = settings.officeHours;
+  document.getElementById("yearNow").textContent = new Date().getFullYear();
+  document.getElementById("spotlightEyebrowText").textContent = settings.spotlightEyebrow;
+  document.getElementById("spotlightTitleText").textContent = settings.spotlightTitle;
+  document.getElementById("latestEyebrowText").textContent = settings.latestEyebrow;
+  document.getElementById("latestTitleText").textContent = settings.latestTitle;
+  document.getElementById("visionText").textContent = settings.visionText;
+  document.getElementById("missionText").textContent = settings.missionText;
+
+  if (settings.heroVideo) {
+    const v = document.getElementById("heroVideo");
+    v.src = settings.heroVideo;
+    v.style.display = "block";
+    document.getElementById("heroFallback").style.display = "none";
+  }
+
+  /* ---------- principal / leader message ---------- */
+  const leader = mnsGet("leaderMessage");
+  document.getElementById("leaderPhoto").innerHTML = leader.photo
+    ? `<img src="${esc(leader.photo)}" alt="${esc(leader.name)}">`
+    : `<div class="ph-fallback">${esc((leader.name||"?").charAt(0))}</div>`;
+  document.getElementById("leaderMsgText").textContent = leader.message;
+  document.getElementById("leaderNameText").textContent = leader.name;
+  document.getElementById("leaderRoleText").textContent = leader.role;
+
+  /* ---------- facilities ---------- */
+  const facilities = mnsGet("facilities");
+  document.getElementById("facilitiesGrid").innerHTML = facilities.map((f, i) => `
+    <div class="card reveal" style="transition-delay:${(i % 3) * 0.1}s;">
+      <div class="card-icon">${esc(f.icon || "★")}</div>
+      <h3>${esc(f.title)}</h3>
+      <p>${esc(f.description)}</p>
+    </div>`).join("") || "<p>Facility details coming soon.</p>";
+
+  /* ---------- highlights marquee (below hero) ---------- */
+  const highlightPhrases = [
+    "🎓 Quality Education", "🚌 Safe Transport", "🧑‍🏫 Experienced Faculty",
+    ...facilities.slice(0, 4).map(f => `✓ ${f.title}`),
+    "📈 Strong Results", "🤝 Trusted by Families",
+  ];
+  const highlightsHtml = highlightPhrases.map(p => `<span class="m-item">${esc(p)}<span class="dot2">&nbsp;&nbsp;◆&nbsp;&nbsp;</span></span>`).join("");
+  const highlightsEl = document.getElementById("highlightsMarquee");
+  if (highlightsEl) {
+    highlightsEl.innerHTML = highlightsHtml + highlightsHtml;
+    highlightsEl.style.animationDuration = "26s";
+  }
+
+  /* ---------- helpers ---------- */
+  function fmtDate(d){
+    if(!d) return "";
+    const dt = new Date(d + "T00:00:00");
+    if (isNaN(dt)) return d;
+    return dt.toLocaleDateString("en-GB", { day:"2-digit", month:"short" });
+  }
+  function fmtMonth(d){
+    const dt = new Date(d + "T00:00:00");
+    if (isNaN(dt)) return "";
+    return dt.toLocaleDateString("en-GB", { month:"short", year:"numeric" });
+  }
+
+  /* ---------- ticker (notifications) ---------- */
+  const notes = mnsGet("notifications").slice().sort((a,b)=> new Date(b.date)-new Date(a.date));
+
+  /* ---------- latest updates panel (top of homepage) ---------- */
+  const latestIcons = ["🔔", "📌", "🗓️"];
+  document.getElementById("latestGrid").innerHTML = notes.slice(0, 3).map((n, i) => `
+    <div class="latest-card">
+      <div class="ic">${latestIcons[i % latestIcons.length]}</div>
+      <div>
+        <div class="meta">${fmtDate(n.date)}</div>
+        <h3>${esc(n.title)}</h3>
+        <p>${esc(n.text)}</p>
+      </div>
+    </div>`).join("") || `<p style="grid-column:1/-1;color:var(--walnut-soft);">No updates yet — check back soon.</p>`;
+
+  const tickerEl = document.getElementById("tickerItems");
+  if (notes.length) {
+    const items = notes.map(n => `<span>${esc(n.title)}</span>`).join("");
+    tickerEl.innerHTML = items + items; // duplicate for seamless loop
+  } else {
+    tickerEl.innerHTML = "<span>No notifications at the moment.</span>";
+  }
+
+  /* ---------- notifications list ---------- */
+  const noticeList = document.getElementById("noticeList");
+  noticeList.innerHTML = notes.map(n => `
+    <div class="notice-item">
+      <div class="notice-date">${fmtDate(n.date)}<small>${new Date(n.date).getFullYear()}</small></div>
+      <div class="notice-body">
+        <h3>${esc(n.title)}</h3><p>${esc(n.text)}</p>
+        ${n.pdf ? `<a class="pdf-link" href="${esc(n.pdf)}" target="_blank" rel="noopener" download="${esc(n.title)}.pdf">📄 Click Here to Download PDF</a>` : ""}
+      </div>
+    </div>`).join("") || "<p>No notifications yet.</p>";
+
+  /* ---------- red blinking "new" nav badges ---------- */
+  const navBadgeNotif = document.getElementById("navBadgeNotif");
+  if (navBadgeNotif) navBadgeNotif.hidden = notes.length === 0;
+
+  /* ---------- examination ---------- */
+  const exams = mnsGet("examination");
+  document.getElementById("examGrid").innerHTML = exams.map((e, i) => `
+    <div class="card reveal" style="transition-delay:${(i % 3) * 0.1}s;">
+      <div class="meta">${fmtMonth(e.date)}</div>
+      <h3>${esc(e.title)}</h3>
+      <p>${esc(e.desc)}</p>
+    </div>`).join("") || "<p>Examination schedule will be posted soon.</p>";
+
+  /* ---------- syllabus ---------- */
+  const syllabus = mnsGet("syllabus");
+  document.getElementById("syllabusBody").innerHTML = syllabus.map(s => `
+    <tr><td>${esc(s.class)}</td><td>${esc(s.subject)}</td>
+    <td>${s.link ? `<a class="pdf-link" href="${esc(s.link)}" target="_blank" rel="noopener" download="${esc(s.class)}-Syllabus.pdf">📄 Click Here to Download PDF</a>` : "Coming soon"}</td></tr>
+  `).join("") || "<tr><td colspan='3'>No syllabus uploaded yet.</td></tr>";
+
+  const navBadgeSyllabus = document.getElementById("navBadgeSyllabus");
+  if (navBadgeSyllabus) navBadgeSyllabus.hidden = syllabus.length === 0;
+
+  /* ---------- results ---------- */
+  const results = mnsGet("results");
+  document.getElementById("resultsBody").innerHTML = results.map(r => `
+    <tr><td>${esc(r.class)}</td><td>${esc(r.session)}</td>
+    <td>${r.link ? `<a class="btn btn-sm btn-outline" href="${esc(r.link)}" target="_blank">View Result</a>` : "To be announced"}</td></tr>
+  `).join("") || "<tr><td colspan='3'>Results will be published here.</td></tr>";
+
+  /* ---------- roll statement (derived display, editable counts could be added later) ---------- */
+  const rollRows = [
+    ["Class 1","-","-","-"],["Class 2","-","-","-"],["Class 3","-","-","-"],
+    ["Class 4","-","-","-"],["Class 5","-","-","-"],["Class 6","-","-","-"],
+    ["Class 7","-","-","-"],["Class 8","-","-","-"],["Class 9","-","-","-"],["Class 10","-","-","-"],
+  ];
+  document.getElementById("rollBody").innerHTML = rollRows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join("");
+
+  /* ---------- buses ---------- */
+  const buses = mnsGet("buses");
+  document.getElementById("busGrid").innerHTML = buses.map((b, i) => `
+    <div class="card reveal" style="transition-delay:${(i % 3) * 0.1}s;">
+      <div class="card-icon">🚌</div>
+      <div class="meta">${esc(b.route)}</div>
+      <h3>${esc(b.area)}</h3>
+      <p><strong>Driver:</strong> ${esc(b.driver)}<br><strong>Stops:</strong> ${esc(b.stops)}</p>
+    </div>`).join("") || "<p>Bus route information coming soon.</p>";
+
+  /* ---------- staff ---------- */
+  const staff = mnsGet("staff");
+  document.getElementById("staffGrid").innerHTML = staff.map((s, i) => `
+    <div class="staff-card reveal" style="transition-delay:${(i % 4) * 0.08}s;">
+      <div class="staff-photo">${s.photo ? `<img src="${esc(s.photo)}" alt="${esc(s.name)}">` : `<div class="ph-fallback">${esc((s.name||"?").charAt(0))}</div>`}</div>
+      <h3>${esc(s.name)}</h3>
+      <div class="role">${esc(s.role)}</div>
+    </div>`).join("") || "<p>Staff profiles coming soon.</p>";
+
+  /* ---------- teachers (flip cards + view-all modal) ---------- */
+  function teacherCardHtml(t){
+    const photo = t.photo
+      ? `<img src="${esc(t.photo)}" alt="${esc(t.name)}">`
+      : `<div class="ph-fallback">${esc((t.name||"?").charAt(0))}</div>`;
+    return `
+      <div class="teacher-card" tabindex="0">
+        <div class="inner">
+          <div class="teacher-face">
+            ${photo}
+            <h3>${esc(t.name)}</h3>
+            <div class="subj">${esc(t.subject)}</div>
+          </div>
+          <div class="teacher-back">
+            <h4>${esc(t.subject)}</h4>
+            <p>${esc(t.bio || ("Teaches " + (t.subject || "at our school") + "."))}</p>
+          </div>
+        </div>
+      </div>`;
+  }
+  const teachers = mnsGet("teachers");
+  document.getElementById("teacherGrid").innerHTML = teachers.slice(0, 4).map((t, i) => {
+    const card = teacherCardHtml(t);
+    return card.replace('class="teacher-card"', `class="teacher-card reveal" style="transition-delay:${i * 0.08}s;"`);
+  }).join("") || "<p>Teacher profiles coming soon.</p>";
+
+  const teacherModal = document.getElementById("teacherModal");
+  const teacherModalGrid = document.getElementById("teacherModalGrid");
+  function openTeacherModal(){
+    teacherModalGrid.innerHTML = teachers.map((t,i) => {
+      const card = teacherCardHtml(t);
+      return card.replace('class="teacher-card"', `class="teacher-card" style="animation-delay:${i*0.06}s"`);
+    }).join("") || "<p>Teacher profiles coming soon.</p>";
+    teacherModal.classList.add("open");
+    teacherModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+  function closeTeacherModal(){
+    teacherModal.classList.remove("open");
+    teacherModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+  document.getElementById("viewAllTeachersBtn").addEventListener("click", openTeacherModal);
+  document.getElementById("teacherModalClose").addEventListener("click", closeTeacherModal);
+  document.getElementById("teacherModalBackdrop").addEventListener("click", closeTeacherModal);
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeTeacherModal(); });
+
+  /* ---------- admission banner + admissions section ---------- */
+  const admission = mnsGet("admission");
+  const bannerEl = document.getElementById("admissionBanner");
+  if (admission.showBanner === false) {
+    bannerEl.style.display = "none";
+  } else {
+    document.getElementById("admBannerText").innerHTML = `🎓 ${esc(admission.bannerText)}`;
+  }
+  document.getElementById("admIntro").textContent = admission.intro;
+  document.getElementById("admSession").textContent = admission.sessionYear;
+  document.getElementById("admEligibility").textContent = admission.eligibility;
+  document.getElementById("admNote").textContent = admission.note;
+
+  function linesToListItems(text){
+    return (text || "").split("\n").map(l=>l.trim()).filter(Boolean).map(l=>`<li>${esc(l)}</li>`).join("");
+  }
+  document.getElementById("admDatesList").innerHTML = linesToListItems(admission.dates) || "<li>To be announced</li>";
+  document.getElementById("admDocsList").innerHTML = linesToListItems(admission.documents) || "<li>To be announced</li>";
+  document.getElementById("admFeesList").innerHTML = linesToListItems(admission.fees) || "<li>Contact the office for details</li>";
+
+  const steps = (admission.process || "").split("\n").map(s=>s.trim()).filter(Boolean);
+  document.getElementById("admSteps").innerHTML = steps.map((s,i) => `
+    <div class="adm-step"><div class="num">${i+1}</div><p>${esc(s)}</p></div>
+  `).join("") || "<p style='padding:20px;color:var(--walnut-soft);'>Admission process details coming soon.</p>";
+
+  /* ---------- spotlight: side photos + centre video ---------- */
+  const photos = mnsGet("photos");
+  const left = photos.slice(0, Math.ceil(photos.length/2));
+  const right = photos.slice(Math.ceil(photos.length/2));
+  function photoImg(p){ return p.url ? `<img src="${esc(p.url)}" alt="${esc(p.caption)}">` : `<div style="aspect-ratio:3/4;background:var(--mist);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--walnut-soft);font-size:.8rem;">${esc(p.caption||"Photo")}</div>`; }
+  document.getElementById("spotlightLeft").innerHTML = (left.length?left:[{caption:"Photo"}]).map(photoImg).join("");
+  document.getElementById("spotlightRight").innerHTML = (right.length?right:[{caption:"Photo"}]).map(photoImg).join("");
+  const centreVideo = settings.centreVideo;
+  document.getElementById("spotlightMain").innerHTML = centreVideo
+    ? `<video src="${esc(centreVideo)}" controls></video>`
+    : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#cfd8d1;font-size:.9rem;">Featured video can be added from the admin dashboard</div>`;
+
+  /* ---------- photo gallery carousel ---------- */
+  const track = document.getElementById("photoTrack");
+  track.innerHTML = photos.map(p => `
+    <div class="carousel-slide">
+      ${p.url ? `<img src="${esc(p.url)}" alt="${esc(p.caption)}">` : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--walnut-soft);">${esc(p.caption||"Photo")}</div>`}
+      <div class="cap">${esc(p.caption)}</div>
+    </div>`).join("") || "<p>Photos coming soon.</p>";
+  document.getElementById("carPrev").addEventListener("click", () => track.scrollBy({left:-320, behavior:"smooth"}));
+  document.getElementById("carNext").addEventListener("click", () => track.scrollBy({left:320, behavior:"smooth"}));
+
+  /* ---------- our toppers (single scrolling row) ---------- */
+  const toppers = mnsGet("toppers");
+  function topperCardHtml(t, rank){
+    const photo = t.photo
+      ? `<img src="${esc(t.photo)}" alt="${esc(t.name)}">`
+      : `<div class="ph-fallback">${esc((t.name||"?").charAt(0))}</div>`;
+    return `
+      <div class="topper-card">
+        <span class="rank">${rank}</span>
+        ${photo}
+        <div class="cap">
+          <div class="t-name">${esc(t.name)}</div>
+          <div class="t-meta">${esc(t.achievement)}</div>
+        </div>
+      </div>`;
+  }
+  if (toppers.length) {
+    const rowHtml = toppers.map((t, i) => topperCardHtml(t, i + 1)).join("");
+    const rowEl = document.getElementById("toppersRow1");
+    rowEl.innerHTML = rowHtml + rowHtml;
+    rowEl.style.animationDuration = Math.max(18, toppers.length * 5) + "s";
+  } else {
+    document.querySelector(".toppers-rows").innerHTML = `<p style="text-align:center;color:#CBD8CE;">Topper profiles coming soon.</p>`;
+  }
+
+  /* ---------- video gallery ---------- */
+  const videos = mnsGet("videos");
+  document.getElementById("videoGrid").innerHTML = videos.map(v => `
+    <div class="video-card">
+      <div class="frame">${v.url ? `<video src="${esc(v.url)}" controls></video>` : `<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#888;">Video coming soon</div>`}</div>
+      <div class="cap">${esc(v.caption)}</div>
+    </div>`).join("") || "<p>Videos coming soon.</p>";
+
+  /* ---------- recruitment ---------- */
+  const recruit = mnsGet("recruitment");
+  document.getElementById("recruitGrid").innerHTML = recruit.map(r => `
+    <div class="card" style="background:rgba(251,247,238,.06);border-color:rgba(251,247,238,.18);">
+      <div class="meta" style="color:var(--gold);">${fmtMonth(r.date)}</div>
+      <h3 style="color:var(--cream);">${esc(r.title)}</h3>
+      <p style="color:#CBD8CE;">${esc(r.desc)}</p>
+      ${r.link ? `<a class="btn btn-sm btn-ghost" style="margin-top:10px;" href="${esc(r.link)}" target="_blank">Apply / Details</a>` : ""}
+    </div>`).join("") || "<p style='color:#CBD8CE;'>No openings at the moment.</p>";
+
+  /* ---------- feedback ---------- */
+  const feedback = mnsGet("feedback").filter(f => f.approved !== false);
+  const feedbackCardsHtml = feedback.map(f => `
+    <div class="quote-card">
+      <span class="mark">“</span>
+      <p class="msg">${esc(f.text)}</p>
+      <div class="who">— ${esc(f.name)}</div>
+    </div>`).join("");
+  const feedbackMarquee = document.getElementById("feedbackGrid");
+  if (feedback.length) {
+    feedbackMarquee.innerHTML = feedbackCardsHtml + feedbackCardsHtml; // duplicate for seamless loop
+    feedbackMarquee.style.animationDuration = Math.max(18, feedback.length * 6) + "s";
+  } else {
+    feedbackMarquee.closest(".marquee-wrap").style.overflow = "visible";
+    feedbackMarquee.style.animation = "none";
+    feedbackMarquee.innerHTML = "<p>No feedback yet.</p>";
+  }
+
+  /* ---------- admission enquiry form ---------- */
+  document.getElementById("admissionEnquiryForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    const entry = {
+      id: Date.now(),
+      studentName: document.getElementById("aStudentName").value.trim(),
+      dob: document.getElementById("aDob").value,
+      classFor: document.getElementById("aClass").value.trim(),
+      gender: document.getElementById("aGender").value,
+      parent: document.getElementById("aParent").value.trim(),
+      phone: document.getElementById("aPhone").value.trim(),
+      email: document.getElementById("aEmail").value.trim(),
+      prevSchool: document.getElementById("aPrevSchool").value.trim(),
+      address: document.getElementById("aAddress").value.trim(),
+      message: document.getElementById("aMsg").value.trim(),
+      date: new Date().toISOString(),
+      read: false,
+    };
+    const list = mnsGet("admissionApps");
+    list.unshift(entry);
+    mnsSet("admissionApps", list);
+    const msg = document.getElementById("admFormMsg");
+    msg.classList.add("show");
+    this.reset();
+    setTimeout(()=>msg.classList.remove("show"), 6500);
+  });
+
+  /* ---------- contact form ---------- */
+  document.getElementById("contactForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    const entry = {
+      id: Date.now(),
+      name: document.getElementById("cName").value.trim(),
+      phone: document.getElementById("cPhone").value.trim(),
+      email: document.getElementById("cEmail").value.trim(),
+      subject: document.getElementById("cSubject").value.trim(),
+      message: document.getElementById("cMsg").value.trim(),
+      date: new Date().toISOString(),
+      read: false,
+    };
+    const list = mnsGet("contacts");
+    list.unshift(entry);
+    mnsSet("contacts", list);
+    document.getElementById("formMsg").classList.add("show");
+    this.reset();
+    setTimeout(()=>document.getElementById("formMsg").classList.remove("show"), 6000);
+  });
+
+  /* ---------- nav toggle ---------- */
+  const nav = document.getElementById("mainNav");
+  const navToggleBtn = document.getElementById("navToggle");
+  navToggleBtn.addEventListener("click", () => {
+    nav.classList.toggle("open");
+    navToggleBtn.classList.toggle("active");
+  });
+  nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+    nav.classList.remove("open");
+    navToggleBtn.classList.remove("active");
+  }));
+
+  /* ---------- back to top ---------- */
+  const toTop = document.getElementById("toTop");
+  window.addEventListener("scroll", () => {
+    toTop.classList.toggle("show", window.scrollY > 500);
+  });
+
+  /* ---------- site search ---------- */
+  const searchIndex = [
+    ...notes.map(n => ({ cat:"Notification", title:n.title, snippet:n.text, anchor:"#notifications" })),
+    ...syllabus.map(s => ({ cat:"Syllabus", title:`${s.class} — ${s.subject}`, snippet:"", anchor:"#syllabus" })),
+    ...exams.map(e => ({ cat:"Examination", title:e.title, snippet:e.desc, anchor:"#examination" })),
+    ...results.map(r => ({ cat:"Results", title:`${r.class} — ${r.session}`, snippet:"", anchor:"#results" })),
+    ...buses.map(b => ({ cat:"Bus Route", title:`${b.route} — ${b.area}`, snippet:b.stops, anchor:"#buses" })),
+    ...staff.map(s => ({ cat:"Staff", title:s.name, snippet:s.role, anchor:"#staff" })),
+    ...teachers.map(t => ({ cat:"Teacher", title:t.name, snippet:t.subject, anchor:"#teachers" })),
+    ...recruit.map(r => ({ cat:"Recruitment", title:r.title, snippet:r.desc, anchor:"#recruitment" })),
+    { cat:"Section", title:"Admissions", snippet:"Eligibility, documents, fees, dates, enquiry form", anchor:"#admissions" },
+    { cat:"Section", title:"Contact Us", snippet:"Address, phone, email, office hours", anchor:"#contact" },
+    { cat:"Section", title:"Photo Gallery", snippet:"Photos from school life", anchor:"#gallery" },
+    { cat:"Section", title:"Video Gallery", snippet:"Videos from school events", anchor:"#videos" },
+    { cat:"Section", title:"Parents Feedback", snippet:"What parents say about us", anchor:"#feedback" },
+    { cat:"Section", title:"Our Facilities", snippet:"Library, labs, smart classrooms, playground", anchor:"#facilities" },
+    ...toppers.map(t => ({ cat:"Topper", title:t.name, snippet:t.achievement, anchor:"#toppers" })),
+  ];
+  const searchInput = document.getElementById("siteSearchInput");
+  const searchResultsEl = document.getElementById("searchResults");
+  function runSearch(q){
+    const query = q.trim().toLowerCase();
+    if (!query) { searchResultsEl.classList.remove("show"); searchResultsEl.innerHTML = ""; return; }
+    const matches = searchIndex.filter(item =>
+      item.title.toLowerCase().includes(query) || (item.snippet || "").toLowerCase().includes(query)
+    ).slice(0, 8);
+    if (!matches.length) {
+      searchResultsEl.innerHTML = `<div class="r-empty">No results for "${esc(q)}"</div>`;
+    } else {
+      searchResultsEl.innerHTML = matches.map(m => `
+        <a href="${m.anchor}">
+          <div class="r-cat">${esc(m.cat)}</div>
+          <div class="r-title">${esc(m.title)}</div>
+        </a>`).join("");
+    }
+    searchResultsEl.classList.add("show");
+  }
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => runSearch(e.target.value));
+    searchInput.addEventListener("focus", (e) => { if (e.target.value.trim()) runSearch(e.target.value); });
+    searchResultsEl.addEventListener("click", (e) => {
+      if (e.target.closest("a")) {
+        searchInput.value = "";
+        searchResultsEl.classList.remove("show");
+      }
+    });
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".site-search")) searchResultsEl.classList.remove("show");
+    });
+  }
+
+  /* ---------- scroll reveal for section headers + cards ---------- */
+  document.querySelectorAll(".section-head").forEach(el => el.classList.add("reveal"));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        en.target.classList.add("in");
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+})();
+
+</script>
+<script>
+(function(){
+  mnsInitAll();
+
+  /* ============================================================
+     LOGIN
+     ============================================================ */
+  const loginScreen = document.getElementById("loginScreen");
+  const dashboard = document.getElementById("dashboard");
+
+  function showDashboard(){
+    loginScreen.style.display = "none";
+    dashboard.style.display = "flex";
+    buildSideNav();
+    switchPanel("dashboard");
+  }
+
+  if (mnsIsLoggedIn()) showDashboard();
+
+  document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    const u = document.getElementById("luser").value.trim();
+    const p = document.getElementById("lpass").value;
+    if (mnsLogin(u, p)) {
+      document.getElementById("loginError").classList.remove("show");
+      showDashboard();
+    } else {
+      document.getElementById("loginError").classList.add("show");
+    }
+  });
+
+  document.getElementById("logoutBtn").addEventListener("click", function(){
+    mnsLogout();
+    dashboard.style.display = "none";
+    loginScreen.style.display = "flex";
+    document.getElementById("loginForm").reset();
+  });
+
+  /* ============================================================
+     TOAST
+     ============================================================ */
+  function toast(msg){
+    const t = document.getElementById("toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    setTimeout(()=>t.classList.remove("show"), 2200);
+  }
+
+  /* ============================================================
+     SECTION CONFIG — every array-based content type is described
+     once here; the generic CRUD renderer below builds the whole
+     panel (form + list) from this config.
+     ============================================================ */
+  const SECTIONS = [
+    { key:"notifications", label:"Notifications", icon:"🔔",
+      fields:[
+        {name:"title", label:"Title", type:"text", required:true},
+        {name:"date", label:"Date", type:"date", required:true},
+        {name:"text", label:"Details", type:"textarea", required:true},
+        {name:"pdf", label:"Attach PDF (optional — shows a Download PDF button)", type:"pdf"},
+      ],
+      itemTitle:i=>i.title, itemSub:i=>i.date },
+    { key:"recruitment", label:"Recruitment", icon:"💼",
+      fields:[
+        {name:"title", label:"Position", type:"text", required:true},
+        {name:"date", label:"Posted Date", type:"date", required:true},
+        {name:"desc", label:"Description", type:"textarea", required:true},
+        {name:"link", label:"Application Link (optional)", type:"text"},
+      ],
+      itemTitle:i=>i.title, itemSub:i=>i.date },
+    { key:"syllabus", label:"Syllabus", icon:"📘",
+      fields:[
+        {name:"class", label:"Class", type:"text", required:true},
+        {name:"subject", label:"Subject(s)", type:"text", required:true},
+        {name:"link", label:"Attach PDF (optional — shows a Download PDF button)", type:"pdf"},
+      ],
+      itemTitle:i=>i.class, itemSub:i=>i.subject },
+    { key:"examination", label:"Examination", icon:"📝",
+      fields:[
+        {name:"title", label:"Title", type:"text", required:true},
+        {name:"date", label:"Date", type:"date", required:true},
+        {name:"desc", label:"Details", type:"textarea", required:true},
+      ],
+      itemTitle:i=>i.title, itemSub:i=>i.date },
+    { key:"results", label:"Results", icon:"🏅",
+      fields:[
+        {name:"class", label:"Class", type:"text", required:true},
+        {name:"session", label:"Session", type:"text", required:true},
+        {name:"link", label:"Result Link (optional)", type:"text"},
+      ],
+      itemTitle:i=>i.class, itemSub:i=>i.session },
+    { key:"buses", label:"Bus Routes", icon:"🚌",
+      fields:[
+        {name:"route", label:"Route Name", type:"text", required:true},
+        {name:"area", label:"Area Covered", type:"text", required:true},
+        {name:"driver", label:"Driver", type:"text"},
+        {name:"stops", label:"Stops", type:"textarea"},
+      ],
+      itemTitle:i=>i.route, itemSub:i=>i.area },
+    { key:"staff", label:"Staff", icon:"🧑‍🏫",
+      fields:[
+        {name:"name", label:"Full Name", type:"text", required:true},
+        {name:"role", label:"Designation", type:"text", required:true},
+        {name:"photo", label:"Photo (optional)", type:"image"},
+      ],
+      itemTitle:i=>i.name, itemSub:i=>i.role },
+    { key:"teachers", label:"Teachers", icon:"👩‍🏫",
+      fields:[
+        {name:"name", label:"Full Name", type:"text", required:true},
+        {name:"subject", label:"Subject Taught", type:"text", required:true},
+        {name:"photo", label:"Photo (optional)", type:"image"},
+        {name:"bio", label:"Short Note (shown on hover, optional)", type:"textarea"},
+      ],
+      itemTitle:i=>i.name, itemSub:i=>i.subject },
+    { key:"toppers", label:"Our Toppers", icon:"🏅",
+      fields:[
+        {name:"name", label:"Student Name", type:"text", required:true},
+        {name:"achievement", label:"Achievement (e.g. Class 10 — 97%)", type:"text", required:true},
+        {name:"photo", label:"Photo (optional)", type:"image"},
+      ],
+      itemTitle:i=>i.name, itemSub:i=>i.achievement },
+    { key:"photos", label:"Photo Gallery", icon:"🖼️",
+      fields:[
+        {name:"url", label:"Photo", type:"image", required:true},
+        {name:"caption", label:"Caption", type:"text", required:true},
+      ],
+      itemTitle:i=>i.caption, itemSub:i=>(i.url ? "Photo attached" : "No photo yet") },
+    { key:"videos", label:"Video Gallery", icon:"🎬",
+      fields:[
+        {name:"url", label:"Video file URL (direct link to an .mp4 file)", type:"text", required:true},
+        {name:"caption", label:"Caption", type:"text", required:true},
+      ],
+      itemTitle:i=>i.caption, itemSub:i=>i.url },
+    { key:"feedback", label:"Parents Feedback", icon:"💬",
+      fields:[
+        {name:"name", label:"Parent Name", type:"text", required:true},
+        {name:"text", label:"Feedback", type:"textarea", required:true},
+        {name:"approved", label:"Show on website", type:"checkbox"},
+      ],
+      itemTitle:i=>i.name, itemSub:i=>i.text },
+    { key:"facilities", label:"Facilities", icon:"🏫",
+      fields:[
+        {name:"icon", label:"Icon (emoji, e.g. 📚)", type:"text"},
+        {name:"title", label:"Title", type:"text", required:true},
+        {name:"description", label:"Description", type:"textarea", required:true},
+      ],
+      itemTitle:i=>i.title, itemSub:i=>i.description },
+  ];
+
+  const NAV_ITEMS = [
+    {key:"dashboard", label:"Dashboard", icon:"📊"},
+    {key:"settings", label:"Site Settings", icon:"⚙️"},
+    {key:"admission", label:"Admissions Content", icon:"🎓"},
+    {key:"leaderMessage", label:"Principal's Message", icon:"🖋️"},
+    ...SECTIONS.map(s=>({key:s.key, label:s.label, icon:s.icon})),
+    {key:"admissionApps", label:"Admission Enquiries", icon:"📥"},
+    {key:"messages", label:"Messages", icon:"✉️"},
+    {key:"account", label:"Account", icon:"🔑"},
+  ];
+
+  function buildSideNav(){
+    const nav = document.getElementById("sideNav");
+    nav.innerHTML = NAV_ITEMS.map(n =>
+      `<a href="#" data-key="${n.key}"><span>${n.icon}</span> ${n.label}</a>`
+    ).join("");
+    nav.querySelectorAll("a").forEach(a=>{
+      a.addEventListener("click", (e)=>{ e.preventDefault(); switchPanel(a.dataset.key); });
+    });
+  }
+
+  function setActiveNav(key){
+    document.querySelectorAll("#sideNav a").forEach(a=>{
+      a.classList.toggle("active", a.dataset.key === key);
+    });
+  }
+
+  function switchPanel(key){
+    setActiveNav(key);
+    const item = NAV_ITEMS.find(n=>n.key===key);
+    document.getElementById("panelTitle").textContent = item ? item.label : "Dashboard";
+    const body = document.getElementById("panelBody");
+    body.innerHTML = "";
+    if (key === "dashboard") return renderDashboardPanel(body);
+    if (key === "settings") return renderSettingsPanel(body);
+    if (key === "admission") return renderAdmissionPanel(body);
+    if (key === "leaderMessage") return renderLeaderPanel(body);
+    if (key === "admissionApps") return renderAdmissionAppsPanel(body);
+    if (key === "messages") return renderMessagesPanel(body);
+    if (key === "account") return renderAccountPanel(body);
+    const section = SECTIONS.find(s=>s.key===key);
+    if (section) return renderListPanel(body, section);
+  }
+
+  function esc(s){ return (s||"").toString().replace(/[&<>"']/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m])); }
+
+  /* ============================================================
+     DASHBOARD PANEL
+     ============================================================ */
+  function renderDashboardPanel(body){
+    const counts = SECTIONS.map(s => ({label:s.label, n: mnsGet(s.key).length}));
+    const unread = mnsGet("contacts").filter(c=>!c.read).length;
+    const unreadAdm = mnsGet("admissionApps").filter(c=>!c.read).length;
+    body.innerHTML = `
+      <div class="stat-grid">
+        <div class="stat-card"><div class="num">${mnsGet("notifications").length}</div><div class="lbl">Notifications</div></div>
+        <div class="stat-card"><div class="num">${mnsGet("recruitment").length}</div><div class="lbl">Open Positions</div></div>
+        <div class="stat-card"><div class="num">${mnsGet("photos").length + mnsGet("videos").length}</div><div class="lbl">Gallery Items</div></div>
+        <div class="stat-card"><div class="num">${unreadAdm}</div><div class="lbl">New Admission Enquiries</div></div>
+        <div class="stat-card"><div class="num">${unread}</div><div class="lbl">Unread Messages</div></div>
+      </div>
+      <div class="admin-panel">
+        <h3>Welcome back</h3>
+        <p class="hint">Use the menu on the left to edit every section of the website — notifications, recruitment, syllabus, examinations, results, transport, staff, both galleries, parents' feedback, site settings and incoming contact messages. Changes appear on the live site immediately in this browser.</p>
+        <div class="admin-list-item" style="border:none;">
+          <div class="info"><b>Content overview</b><span>${counts.map(c=>`${c.label}: ${c.n}`).join(" · ")}</span></div>
+        </div>
+      </div>`;
+  }
+
+  /* ============================================================
+     GENERIC LIST (CRUD) PANEL
+     ============================================================ */
+  function renderListPanel(body, section){
+    let editingId = null;
+    let fileData = {};
+
+    const panel = document.createElement("div");
+    panel.className = "admin-panel";
+    panel.innerHTML = `
+      <h3 id="formHeading">Add ${section.label.replace(/s$/,"")}</h3>
+      <p class="hint">Fill in the details below, then save. Click the pencil on any item to edit it.</p>
+      <form id="itemForm"></form>
+    `;
+    body.appendChild(panel);
+
+    const form = panel.querySelector("#itemForm");
+
+    function fileFieldHtml(f){
+      const accept = f.type === "image" ? "image/*" : "application/pdf";
+      const btnLabel = f.type === "image" ? "📷 Choose Photo" : "📄 Choose PDF File";
+      const hint = f.type === "image" ? "JPG or PNG, ideally under 1–2MB." : "PDF file, ideally under 2–3MB.";
+      return `<div class="form-field">
+        <label>${f.label}</label>
+        <div class="file-input-wrap">
+          <label class="file-choose-btn">${btnLabel}<input type="file" accept="${accept}" data-field="${f.name}"></label>
+          <div class="file-preview" data-preview="${f.name}"><span style="color:var(--walnut-soft);">No file chosen</span></div>
+        </div>
+        <div class="file-hint">${hint}</div>
+      </div>`;
+    }
+
+    form.innerHTML = section.fields.map(f => {
+      if (f.type === "image" || f.type === "pdf") return fileFieldHtml(f);
+      if (f.type === "textarea") {
+        return `<div class="form-field"><label>${f.label}</label><textarea name="${f.name}" rows="3" ${f.required?"required":""}></textarea></div>`;
+      }
+      if (f.type === "checkbox") {
+        return `<div class="form-field"><label><input type="checkbox" name="${f.name}" style="width:auto;margin-right:8px;">${f.label}</label></div>`;
+      }
+      return `<div class="form-field"><label>${f.label}</label><input type="${f.type}" name="${f.name}" ${f.required?"required":""}></div>`;
+    }).join("") + `
+      <div style="display:flex;gap:10px;">
+        <button type="submit" class="btn btn-primary" id="saveBtn">Save</button>
+        <button type="button" class="btn btn-outline" id="cancelEditBtn" style="display:none;">Cancel Edit</button>
+      </div>`;
+
+    function renderPreview(name, value, type){
+      const wrap = form.querySelector(`[data-preview="${name}"]`);
+      if (!wrap) return;
+      if (!value) { wrap.innerHTML = `<span style="color:var(--walnut-soft);">No file chosen</span>`; return; }
+      if (type === "image") {
+        wrap.innerHTML = `<img src="${value}" alt="preview"><button type="button" class="file-remove" data-clear="${name}">Remove</button>`;
+      } else {
+        wrap.innerHTML = `<span class="pdf-chip">📄 PDF attached</span><button type="button" class="file-remove" data-clear="${name}">Remove</button>`;
+      }
+    }
+
+  /* ============================================================
+     Compress an uploaded photo before storing it, so browser
+     storage (which has a hard size limit) lasts much longer.
+     Resizes to a max dimension and re-encodes as JPEG.
+     ============================================================ */
+  function compressImage(file, maxDim, quality){
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onerror = () => reject(new Error("Could not read file"));
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onerror = () => reject(new Error("Could not read image"));
+        img.onload = () => {
+          let { width, height } = img;
+          if (width > maxDim || height > maxDim) {
+            if (width > height) { height = Math.round(height * maxDim / width); width = maxDim; }
+            else { width = Math.round(width * maxDim / height); height = maxDim; }
+          }
+          const canvas = document.createElement("canvas");
+          canvas.width = width; canvas.height = height;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, width, height);
+          resolve(canvas.toDataURL("image/jpeg", quality));
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  section.fields.forEach(f => {
+      if (f.type !== "image" && f.type !== "pdf") return;
+      const input = form.querySelector(`input[type="file"][data-field="${f.name}"]`);
+      input.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        if (f.type === "pdf") {
+          if (file.size > 2.2 * 1024 * 1024) {
+            toast("That PDF is quite large — it may hit storage limits. A smaller file is safer.");
+          }
+          const reader = new FileReader();
+          reader.onload = () => {
+            fileData[f.name] = reader.result;
+            renderPreview(f.name, fileData[f.name], f.type);
+          };
+          reader.onerror = () => toast("Could not read that file — please try again.");
+          reader.readAsDataURL(file);
+        } else {
+          // images are compressed first so storage lasts much longer
+          compressImage(file, 1000, 0.82).then((dataUrl) => {
+            fileData[f.name] = dataUrl;
+            renderPreview(f.name, fileData[f.name], f.type);
+          }).catch(() => {
+            toast("Could not read that photo — please try a different file.");
+          });
+        }
+      });
+    });
+
+    form.addEventListener("click", (e) => {
+      const btn = e.target.closest(".file-remove");
+      if (!btn) return;
+      e.preventDefault();
+      const name = btn.dataset.clear;
+      fileData[name] = "";
+      const f = section.fields.find(f=>f.name===name);
+      renderPreview(name, "", f.type);
+    });
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      const fd = new FormData(form);
+      const list = mnsGet(section.key);
+      const obj = {};
+      section.fields.forEach(f => {
+        if (f.type === "checkbox") obj[f.name] = form[f.name].checked;
+        else if (f.type === "image" || f.type === "pdf") obj[f.name] = Object.prototype.hasOwnProperty.call(fileData, f.name) ? fileData[f.name] : "";
+        else obj[f.name] = (fd.get(f.name) || "").toString().trim();
+      });
+      const isEdit = editingId !== null;
+      let newList;
+      if (isEdit) {
+        const idx = list.findIndex(i=>i.id===editingId);
+        newList = list.slice();
+        if (idx > -1) newList[idx] = { ...newList[idx], ...obj };
+      } else {
+        obj.id = mnsNextId(list);
+        newList = list.concat([obj]);
+      }
+      const ok = mnsSet(section.key, newList);
+      if (!ok) {
+        toast("⚠ Storage is full — could not save. Try a smaller photo/PDF, or delete some older items first.");
+        return; // keep the form filled in so nothing is lost
+      }
+      toast(isEdit ? `${section.label} updated` : `${section.label} added`);
+      resetForm();
+      renderList();
+    });
+
+    panel.querySelector("#cancelEditBtn").addEventListener("click", resetForm);
+
+    function resetForm(){
+      editingId = null;
+      form.reset();
+      fileData = {};
+      section.fields.forEach(f => { if (f.type === "image" || f.type === "pdf") renderPreview(f.name, "", f.type); });
+      panel.querySelector("#formHeading").textContent = `Add ${section.label.replace(/s$/,"")}`;
+      panel.querySelector("#cancelEditBtn").style.display = "none";
+    }
+
+    const listPanel = document.createElement("div");
+    listPanel.className = "admin-panel";
+    listPanel.innerHTML = `<h3>Current ${section.label}</h3><div id="listArea"></div>`;
+    body.appendChild(listPanel);
+    const listArea = listPanel.querySelector("#listArea");
+
+    function renderList(){
+      const list = mnsGet(section.key);
+      if (!list.length) { listArea.innerHTML = `<p class="hint">Nothing added yet.</p>`; return; }
+      listArea.innerHTML = list.map(item => `
+        <div class="admin-list-item">
+          <div class="info"><b>${esc(section.itemTitle(item))}</b><span>${esc(section.itemSub(item))}</span></div>
+          <div class="admin-actions">
+            <button class="icon-btn" data-act="edit" data-id="${item.id}" aria-label="Edit">✎</button>
+            <button class="icon-btn danger" data-act="del" data-id="${item.id}" aria-label="Delete">🗑</button>
+          </div>
+        </div>`).join("");
+      listArea.querySelectorAll('[data-act="edit"]').forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          const id = Number(btn.dataset.id);
+          const item = mnsGet(section.key).find(i=>i.id===id);
+          if (!item) return;
+          editingId = id;
+          section.fields.forEach(f=>{
+            if (f.type === "checkbox") form[f.name].checked = !!item[f.name];
+            else if (f.type === "image" || f.type === "pdf") { fileData[f.name] = item[f.name] || ""; renderPreview(f.name, fileData[f.name], f.type); }
+            else form[f.name].value = item[f.name] || "";
+          });
+          panel.querySelector("#formHeading").textContent = `Edit ${section.label.replace(/s$/,"")}`;
+          panel.querySelector("#cancelEditBtn").style.display = "inline-flex";
+          panel.scrollIntoView({behavior:"smooth", block:"start"});
+        });
+      });
+      listArea.querySelectorAll('[data-act="del"]').forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          if (!confirm("Delete this item? This cannot be undone.")) return;
+          const id = Number(btn.dataset.id);
+          mnsSet(section.key, mnsGet(section.key).filter(i=>i.id!==id));
+          toast(`${section.label} deleted`);
+          renderList();
+        });
+      });
+    }
+    renderList();
+  }
+
+  /* ============================================================
+     SETTINGS PANEL
+     ============================================================ */
+  function renderSettingsPanel(body){
+    const s = mnsGet("settings");
+    const fields = [
+      ["schoolName","School Name","text"],["place","Place / Location line","text"],
+      ["tagline","Tagline","text"],["phone","Phone","text"],["email","Email","text"],
+      ["address","Address","textarea"],["officeHours","Office Hours (shown in Contact Us)","text"],
+      ["establishedYear","Established Year (shown as a badge in the hero)","text"],
+      ["affiliation","Board Affiliation (shown as a badge in the hero)","text"],
+      ["heroVideo","Homepage Background Video URL (.mp4, optional)","text"],
+      ["centreVideo","Featured / Centre Video — direct link to an .mp4 video file","text"],
+      ["visionText","Our Vision text","textarea"],
+      ["missionText","Our Mission text","textarea"],
+      ["latestEyebrow","Latest Updates — small label above the top panel","text"],
+      ["latestTitle","Latest Updates — heading above the top panel","text"],
+      ["spotlightEyebrow","School Life Panel — small label (side photos + centre video section)","text"],
+      ["spotlightTitle","School Life Panel — heading (side photos + centre video section)","text"],
+    ];
+    const panel = document.createElement("div");
+    panel.className = "admin-panel";
+    panel.innerHTML = `
+      <h3>Site Settings</h3>
+      <p class="hint">These details appear across the homepage, footer and contact section.</p>
+      <form id="settingsForm">
+        ${fields.map(([name,label,type])=>
+          type==="textarea"
+          ? `<div class="form-field"><label>${label}</label><textarea name="${name}" rows="3">${esc(s[name])}</textarea></div>`
+          : `<div class="form-field"><label>${label}</label><input type="text" name="${name}" value="${esc(s[name])}"></div>`
+        ).join("")}
+        <button type="submit" class="btn btn-primary">Save Settings</button>
+      </form>`;
+    body.appendChild(panel);
+    panel.querySelector("#settingsForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const fd = new FormData(this);
+      const updated = { ...s };
+      fields.forEach(([name])=> updated[name] = (fd.get(name)||"").toString().trim());
+      const ok = mnsSet("settings", updated);
+      toast(ok ? "Settings saved" : "⚠ Storage is full — settings could not be saved.");
+    });
+  }
+
+  /* ============================================================
+     PRINCIPAL'S MESSAGE PANEL
+     ============================================================ */
+  function renderLeaderPanel(body){
+    const l = mnsGet("leaderMessage");
+    const panel = document.createElement("div");
+    panel.className = "admin-panel";
+    panel.innerHTML = `
+      <h3>Principal's Message</h3>
+      <p class="hint">Shown as a dedicated section on the homepage, with a photo alongside the message.</p>
+      <form id="leaderForm">
+        <div class="form-field"><label>Name</label><input type="text" name="name" value="${esc(l.name)}"></div>
+        <div class="form-field"><label>Role / Designation</label><input type="text" name="role" value="${esc(l.role)}"></div>
+        <div class="form-field">
+          <label>Photo (optional)</label>
+          <div class="file-input-wrap">
+            <label class="file-choose-btn">📷 Choose Photo<input type="file" accept="image/*" id="leaderPhotoInput"></label>
+            <div class="file-preview" id="leaderPhotoPreview">${l.photo ? `<img src="${esc(l.photo)}" alt="preview"><button type="button" class="file-remove" id="leaderPhotoClear">Remove</button>` : `<span style="color:var(--walnut-soft);">No file chosen</span>`}</div>
+          </div>
+          <div class="file-hint">JPG or PNG, ideally under 1–2MB.</div>
+        </div>
+        <div class="form-field"><label>Message</label><textarea name="message" rows="5">${esc(l.message)}</textarea></div>
+        <button type="submit" class="btn btn-primary">Save Message</button>
+      </form>`;
+    body.appendChild(panel);
+
+    let photoData = l.photo || "";
+    function compressImage(file, maxDim, quality){
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onerror = () => reject(new Error("Could not read file"));
+        reader.onload = (e) => {
+          const img = new Image();
+          img.onerror = () => reject(new Error("Could not read image"));
+          img.onload = () => {
+            let { width, height } = img;
+            if (width > maxDim || height > maxDim) {
+              if (width > height) { height = Math.round(height * maxDim / width); width = maxDim; }
+              else { width = Math.round(width * maxDim / height); height = maxDim; }
+            }
+            const canvas = document.createElement("canvas");
+            canvas.width = width; canvas.height = height;
+            canvas.getContext("2d").drawImage(img, 0, 0, width, height);
+            resolve(canvas.toDataURL("image/jpeg", quality));
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+    function renderLeaderPreview(){
+      const wrap = document.getElementById("leaderPhotoPreview");
+      wrap.innerHTML = photoData
+        ? `<img src="${photoData}" alt="preview"><button type="button" class="file-remove" id="leaderPhotoClear">Remove</button>`
+        : `<span style="color:var(--walnut-soft);">No file chosen</span>`;
+      const clearBtn = document.getElementById("leaderPhotoClear");
+      if (clearBtn) clearBtn.addEventListener("click", () => { photoData = ""; renderLeaderPreview(); });
+    }
+    renderLeaderPreview();
+    document.getElementById("leaderPhotoInput").addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      compressImage(file, 900, 0.85).then((dataUrl) => {
+        photoData = dataUrl;
+        renderLeaderPreview();
+      }).catch(() => toast("Could not read that photo — please try a different file."));
+    });
+
+    panel.querySelector("#leaderForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const fd = new FormData(this);
+      const updated = {
+        name: (fd.get("name")||"").toString().trim(),
+        role: (fd.get("role")||"").toString().trim(),
+        message: (fd.get("message")||"").toString().trim(),
+        photo: photoData,
+      };
+      const ok = mnsSet("leaderMessage", updated);
+      toast(ok ? "Message saved" : "⚠ Storage is full — could not save.");
+    });
+  }
+
+  /* ============================================================
+     ADMISSIONS CONTENT PANEL
+     ============================================================ */
+  function renderAdmissionPanel(body){
+    const a = mnsGet("admission");
+    const textFields = [
+      ["sessionYear","Session Year (e.g. 2026–27)","text"],
+      ["bannerText","Banner Text (shown in the strip above the menu)","text"],
+    ];
+    const areaFields = [
+      ["intro","Introduction (shown at the top of the Admissions section)"],
+      ["eligibility","Eligibility Criteria"],
+      ["documents","Documents Required (one per line)"],
+      ["process","Admission Process — Steps (one step per line, shown as numbered steps)"],
+      ["fees","Fee Structure (one line per item)"],
+      ["dates","Important Dates (one line per item)"],
+      ["note","Note shown above the 'Fill Admission Form' button"],
+    ];
+    const panel = document.createElement("div");
+    panel.className = "admin-panel";
+    panel.innerHTML = `
+      <h3>Admissions Content</h3>
+      <p class="hint">Controls the admission banner above the menu and the full Admissions section on the homepage. For the multi-line fields, put one item per line — each line becomes a separate bullet or step.</p>
+      <form id="admContentForm">
+        <div class="form-field"><label><input type="checkbox" name="showBanner" style="width:auto;margin-right:8px;" ${a.showBanner!==false?"checked":""}>Show the admission banner above the menu</label></div>
+        ${textFields.map(([name,label])=>`<div class="form-field"><label>${label}</label><input type="text" name="${name}" value="${esc(a[name])}"></div>`).join("")}
+        ${areaFields.map(([name,label])=>`<div class="form-field"><label>${label}</label><textarea name="${name}" rows="4">${esc(a[name])}</textarea></div>`).join("")}
+        <button type="submit" class="btn btn-primary">Save Admissions Content</button>
+      </form>`;
+    body.appendChild(panel);
+    panel.querySelector("#admContentForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const fd = new FormData(this);
+      const updated = { ...a };
+      textFields.forEach(([name])=> updated[name] = (fd.get(name)||"").toString().trim());
+      areaFields.forEach(([name])=> updated[name] = (fd.get(name)||"").toString());
+      updated.showBanner = this.showBanner.checked;
+      const ok = mnsSet("admission", updated);
+      toast(ok ? "Admissions content saved" : "⚠ Storage is full — could not save.");
+    });
+  }
+
+  /* ============================================================
+     ADMISSION ENQUIRIES PANEL
+     ============================================================ */
+  function renderAdmissionAppsPanel(body){
+    const panel = document.createElement("div");
+    panel.className = "admin-panel";
+    panel.innerHTML = `<h3>Admission Enquiries</h3><p class="hint">Submissions from the Admission Enquiry Form on the website.</p><div id="admAppArea"></div>`;
+    body.appendChild(panel);
+    const area = panel.querySelector("#admAppArea");
+
+    function render(){
+      const list = mnsGet("admissionApps");
+      if (!list.length) { area.innerHTML = `<p class="hint">No admission enquiries yet.</p>`; return; }
+      area.innerHTML = list.map(a => `
+        <div class="admin-list-item" style="align-items:flex-start;">
+          <div class="info">
+            <b>${esc(a.studentName)} ${a.read?"":'<span class="badge">New</span>'}</b>
+            <span>Applying for ${esc(a.classFor)} · DOB: ${esc(a.dob)} · ${esc(a.gender)}</span>
+            <p style="margin:8px 0 0;color:var(--walnut-soft);font-size:.9rem;">
+              Parent: ${esc(a.parent)} · ${esc(a.phone)}${a.email?" · "+esc(a.email):""}<br>
+              ${a.prevSchool?`Previous School: ${esc(a.prevSchool)}<br>`:""}
+              Address: ${esc(a.address)}
+              ${a.message?`<br>Notes: ${esc(a.message)}`:""}
+            </p>
+            <span style="display:block;margin-top:6px;font-size:.75rem;">${new Date(a.date).toLocaleString()}</span>
+          </div>
+          <div class="admin-actions">
+            <button class="icon-btn danger" data-id="${a.id}" aria-label="Delete">🗑</button>
+          </div>
+        </div>`).join("");
+      area.querySelectorAll(".icon-btn").forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          if(!confirm("Delete this admission enquiry?")) return;
+          mnsSet("admissionApps", mnsGet("admissionApps").filter(c=>c.id!==Number(btn.dataset.id)));
+          render();
+        });
+      });
+      const updated = mnsGet("admissionApps").map(a=>({...a, read:true}));
+      mnsSet("admissionApps", updated);
+    }
+    render();
+  }
+
+  /* ============================================================
+     MESSAGES PANEL (contact form submissions)
+     ============================================================ */
+  function renderMessagesPanel(body){
+    const panel = document.createElement("div");
+    panel.className = "admin-panel";
+    panel.innerHTML = `<h3>Contact Messages</h3><p class="hint">Messages submitted through the website's contact form.</p><div id="msgArea"></div>`;
+    body.appendChild(panel);
+    const area = panel.querySelector("#msgArea");
+
+    function render(){
+      const list = mnsGet("contacts");
+      if (!list.length) { area.innerHTML = `<p class="hint">No messages yet.</p>`; return; }
+      area.innerHTML = list.map(m => `
+        <div class="admin-list-item" style="align-items:flex-start;">
+          <div class="info">
+            <b>${esc(m.name)} ${m.read?"":'<span class="badge">New</span>'}</b>
+            <span>${esc(m.subject)} — ${esc(m.phone)}${m.email? " · "+esc(m.email):""}</span>
+            <p style="margin:8px 0 0;color:var(--walnut-soft);font-size:.9rem;">${esc(m.message)}</p>
+            <span style="display:block;margin-top:6px;font-size:.75rem;">${new Date(m.date).toLocaleString()}</span>
+          </div>
+          <div class="admin-actions">
+            <button class="icon-btn danger" data-id="${m.id}" aria-label="Delete">🗑</button>
+          </div>
+        </div>`).join("");
+      area.querySelectorAll(".icon-btn").forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          if(!confirm("Delete this message?")) return;
+          mnsSet("contacts", mnsGet("contacts").filter(c=>c.id!==Number(btn.dataset.id)));
+          render();
+        });
+      });
+      // mark all as read once viewed
+      const updated = mnsGet("contacts").map(c=>({...c, read:true}));
+      mnsSet("contacts", updated);
+    }
+    render();
+  }
+
+  /* ============================================================
+     ACCOUNT PANEL
+     ============================================================ */
+  function renderAccountPanel(body){
+    const auth = mnsGet("auth");
+    const panel = document.createElement("div");
+    panel.className = "admin-panel";
+    panel.innerHTML = `
+      <h3>Account</h3>
+      <p class="hint">Change the username or password used to log in to this dashboard. This is stored only in this browser — for use on a school computer, make sure others don't have access to it.</p>
+      <form id="accForm">
+        <div class="form-field"><label>Username</label><input type="text" name="username" value="${esc(auth.username)}" required></div>
+        <div class="form-field"><label>New Password</label><input type="password" name="password" placeholder="Leave blank to keep current password"></div>
+        <button type="submit" class="btn btn-primary">Update Account</button>
+      </form>`;
+    body.appendChild(panel);
+    panel.querySelector("#accForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const fd = new FormData(this);
+      const username = (fd.get("username")||"").toString().trim();
+      const password = (fd.get("password")||"").toString();
+      const updated = { username, password: password ? password : auth.password };
+      mnsSet("auth", updated);
+      toast("Account updated");
+      this.querySelector('[name="password"]').value = "";
+    });
+  }
+})();
+
+</script>
+<script>
+
+/* ---------- simple hash router between the public site and admin ---------- */
+(function(){
+  function applyRoute(){
+    var isAdmin = location.hash.startsWith("#admin");
+    document.getElementById("siteView").style.display = isAdmin ? "none" : "block";
+    document.getElementById("adminView").style.display = isAdmin ? "block" : "none";
+    if (!isAdmin) window.scrollTo(0,0);
+  }
+  window.addEventListener("hashchange", applyRoute);
+  document.addEventListener("DOMContentLoaded", applyRoute);
+})();
+
+</script>
+</body>
+</html>
